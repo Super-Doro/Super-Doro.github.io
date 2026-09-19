@@ -1,4 +1,2209 @@
-<img
-  class="fit-picture"
-  src="20260410211045.png"
-  alt="葡萄柚切片置于其他切片堆上" />
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="商丘工学院轮滑协会发展历程记录">
+  <link rel="icon" type="image/png" href="club-logo.png">
+  <link rel="apple-touch-icon" href="club-logo.png">
+  <title>商丘工学院轮滑协会 · 发展历程</title>
+  <style>
+    :root {
+      --night: #0a0d11;
+      --night-soft: #121820;
+      --paper: #f5f7f8;
+      --paper-deep: #e9eef1;
+      --ink: #12161a;
+      --muted: #646c72;
+      --orange: #ff5b35;
+      --orange-soft: #ffb29e;
+      --blue: #70dcf4;
+      --violet: #7569f4;
+      --mint: #52d4ad;
+      --gold: #ffc35c;
+      --line: rgba(18, 22, 26, 0.18);
+      --white: #ffffff;
+      --shadow: 0 18px 50px rgba(15, 23, 42, 0.09);
+      /* history-data.js 未配置图片时使用的浅色默认背景。 */
+      --hero-background-image: linear-gradient(135deg, #fffaf5 0%, #eaf5fa 48%, #c8deed 100%);
+    }
+
+    * { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 18%, rgba(112,220,244,.1), transparent 27rem),
+        radial-gradient(circle at 92% 48%, rgba(255,91,53,.065), transparent 30rem),
+        var(--paper);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; }
+
+    .hero {
+      position: relative;
+      min-height: 94vh;
+      overflow: hidden;
+      padding: 0 28px;
+      color: var(--ink);
+      background-color: #6378b4;
+      background-image:
+        linear-gradient(90deg, rgba(255,250,245,.95) 0%, rgba(239,247,250,.84) 42%, rgba(231,242,248,.62) 76%, rgba(225,239,247,.46) 100%),
+        var(--hero-background-image);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      opacity: .12;
+      background-image:
+        linear-gradient(rgba(18,22,26,.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(18,22,26,.16) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: linear-gradient(to right, #000, transparent 75%);
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -9vw;
+      bottom: 7vh;
+      width: 46vw;
+      height: 18px;
+      content: "";
+      background: var(--orange);
+      transform: rotate(-13deg);
+      box-shadow: 0 35px 0 rgba(255,91,53,.25), 0 70px 0 rgba(255,91,53,.1);
+    }
+
+    .hero__fade {
+      position: absolute;
+      right: 0;
+      bottom: -1px;
+      left: 0;
+      z-index: 1;
+      height: 190px;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(245,247,248,0) 0%,
+        rgba(245,247,248,.16) 24%,
+        rgba(245,247,248,.58) 62%,
+        var(--paper) 100%
+      );
+    }
+
+    .hero__danmaku {
+      position: absolute;
+      top: 76px;
+      right: 14px;
+      bottom: 180px;
+      left: 14px;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+      contain: layout paint;
+      mask-image: linear-gradient(to right, transparent 0, #000 4%, #000 94%, transparent 100%);
+    }
+
+    .danmaku-item {
+      position: absolute;
+      top: var(--danmaku-top, 20%);
+      left: 100%;
+      display: inline-flex;
+      align-items: center;
+      color: rgba(22,39,52,.72);
+      font-size: clamp(12px, 1vw, 15px);
+      font-weight: 800;
+      letter-spacing: .12em;
+      line-height: 1;
+      white-space: nowrap;
+      text-shadow: 0 1px 5px rgba(255,255,255,.55);
+      animation: danmaku-travel var(--danmaku-duration, 12s) linear forwards;
+      will-change: transform, opacity;
+    }
+
+    @keyframes danmaku-travel {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0);
+      }
+      7% { opacity: .75; }
+      70% { opacity: .68; }
+      100% {
+        opacity: 0;
+        transform: translate3d(calc(-100vw - 120%), 0, 0);
+      }
+    }
+
+    .topbar {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 0;
+      align-items: center;
+      justify-content: space-between;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: inherit;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-decoration: none;
+      transition: opacity .2s ease;
+    }
+
+    .brand:hover { opacity: .72; }
+
+    .brand__logo {
+      width: 34px;
+      height: 34px;
+      padding: 2px;
+      border-radius: 50%;
+      background: var(--white);
+      object-fit: contain;
+    }
+
+    .topbar__status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: rgba(18,22,26,.6);
+    }
+
+    .topbar__status::before {
+      width: 7px;
+      height: 7px;
+      content: "";
+      border-radius: 50%;
+      background: #22b573;
+      box-shadow: 0 0 14px rgba(34,181,115,.65);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
+      width: 100%;
+      min-height: calc(94vh - 79px);
+      margin: 0 auto;
+      align-items: center;
+      gap: 48px;
+      padding: 72px 0 96px;
+    }
+
+    .hero__copy {
+      min-width: 0;
+      padding-left: clamp(18px, 2.2vw, 44px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 24px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #16788f;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 26px;
+      height: 2px;
+      content: "";
+      background: currentColor;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Impact, "Arial Black", "Microsoft YaHei", sans-serif;
+      font-size: clamp(48px, 7.2vw, 98px);
+      font-weight: 900;
+      line-height: .96;
+      letter-spacing: -.07em;
+    }
+
+    h1 em {
+      position: relative;
+      display: inline-block;
+      color: var(--orange);
+      font-style: normal;
+      transform: skewX(-7deg);
+      text-shadow: 5px 5px 0 rgba(112,220,244,.18);
+    }
+
+    .hero__lead {
+      max-width: 590px;
+      margin: 30px 0 34px;
+      padding-left: 18px;
+      border-left: 3px solid var(--orange);
+      color: rgba(18,22,26,.72);
+      font-size: clamp(14px, 1.35vw, 16px);
+    }
+
+    .hero__meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .hero__meta > div,
+    .scroll-cue {
+      display: flex;
+      min-height: 52px;
+      padding: 8px 14px;
+      align-items: center;
+      border: 1px solid rgba(18,22,26,.16);
+      border-radius: 16px;
+      background: rgba(255,255,255,.56);
+      box-shadow: 0 8px 24px rgba(15,23,42,.055);
+    }
+
+    .hero__meta strong {
+      margin-right: 9px;
+      color: var(--ink);
+      font: 800 18px/1 "Arial Narrow", Arial, sans-serif;
+      letter-spacing: -.04em;
+    }
+
+    .scroll-cue {
+      gap: 16px;
+      color: var(--night);
+      background: linear-gradient(135deg, var(--blue), #b9f1dc);
+      border-color: transparent;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 10px 26px rgba(82,212,173,.2);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .scroll-cue:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 34px rgba(82,212,173,.3);
+    }
+
+    .scroll-cue span { font-size: 20px; }
+
+    .hero__visual {
+      position: relative;
+      display: grid;
+      min-height: 500px;
+      place-items: center;
+    }
+
+    .wheel {
+      position: relative;
+      width: min(34vw, 430px);
+      aspect-ratio: 1;
+      padding: clamp(18px, 2.2vw, 30px);
+      border: 1px solid rgba(18,22,26,.12);
+      border-radius: 50%;
+      background: var(--paper);
+      box-shadow:
+        0 0 0 14px rgba(255,255,255,.4),
+        0 0 0 15px rgba(18,22,26,.13),
+        0 0 90px rgba(54,118,150,.18);
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+      appearance: none;
+    }
+
+    .wheel:focus-visible {
+      outline: 4px solid rgba(255,91,53,.38);
+      outline-offset: 12px;
+    }
+
+    .wheel::before {
+      position: absolute;
+      inset: -9%;
+      content: "";
+      border: 1px dashed rgba(18,22,26,.28);
+      border-radius: 50%;
+    }
+
+    .wheel::after {
+      position: absolute;
+      top: 10%;
+      right: -5%;
+      width: 16px;
+      height: 16px;
+      content: "";
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 20px var(--blue);
+    }
+
+    .hero__logo {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 24px rgba(0,0,0,.2));
+      animation: logo-spin 16s linear infinite;
+      animation-play-state: paused;
+      pointer-events: none;
+    }
+
+    .wheel.is-playing .hero__logo { animation-play-state: running; }
+
+    .music-indicator {
+      position: absolute;
+      bottom: -48px;
+      left: 50%;
+      display: inline-flex;
+      min-width: max-content;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 13px;
+      color: rgba(18,22,26,.68);
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 9px 25px rgba(15,23,42,.08);
+      backdrop-filter: blur(12px);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      transform: translateX(-50%);
+    }
+
+    .music-indicator::before {
+      width: 8px;
+      height: 8px;
+      content: "";
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 5px rgba(255,91,53,.12);
+    }
+
+    .wheel.is-playing .music-indicator::before {
+      background: #25a76c;
+      box-shadow: 0 0 0 5px rgba(37,167,108,.14);
+    }
+
+    @keyframes logo-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .hero__badge {
+      position: absolute;
+      right: 0;
+      bottom: 10%;
+      width: 190px;
+      padding: 17px 20px;
+      color: var(--night);
+      background: linear-gradient(135deg, var(--orange), var(--gold));
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(255,91,53,.24);
+      transform: rotate(-4deg);
+    }
+
+    .hero__badge small {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .16em;
+    }
+
+    .hero__badge strong {
+      display: block;
+      font: 900 27px/1 "Arial Narrow", Arial, sans-serif;
+    }
+
+    main {
+      position: relative;
+      isolation: isolate;
+      width: calc(100% - 32px);
+      margin: 0 auto;
+      padding: 72px 0 132px;
+    }
+
+    main::before {
+      position: absolute;
+      inset: 0 50% 0 auto;
+      z-index: -1;
+      width: 100vw;
+      content: "";
+      pointer-events: none;
+      transform: translateX(50%);
+      background-image:
+        linear-gradient(
+          to bottom,
+          var(--paper) 0,
+          rgba(245,247,248,.98) 52px,
+          rgba(245,247,248,.82) 140px,
+          rgba(245,247,248,.28) 260px,
+          transparent 360px
+        ),
+        linear-gradient(rgba(52,75,91,.075) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(52,75,91,.075) 1px, transparent 1px);
+      background-position: 0 0, 0 0, 0 0;
+      background-size: 100% 360px, 46px 46px, 46px 46px;
+      background-repeat: no-repeat, repeat, repeat;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: minmax(220px, .58fr) minmax(0, 1.42fr);
+      width: calc(100% - 64px);
+      margin: 0 auto 72px;
+      gap: clamp(36px, 5vw, 84px);
+      align-items: stretch;
+    }
+
+    .about__heading {
+      position: relative;
+      padding: 30px clamp(34px, 4vw, 68px) 30px 0;
+      color: var(--ink);
+      border-right: 1px solid rgba(18,22,26,.14);
+      background: transparent;
+    }
+
+    .about__heading::after {
+      position: absolute;
+      right: -4px;
+      top: 30px;
+      width: 7px;
+      height: 68px;
+      content: "";
+      background: linear-gradient(180deg, var(--blue), var(--violet));
+      border-radius: 999px;
+    }
+
+    .about__index {
+      display: block;
+      margin-bottom: 20px;
+      color: #16788f;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .18em;
+    }
+
+    .about h2 {
+      color: var(--ink);
+      font-size: clamp(34px, 3.8vw, 50px);
+      font-weight: 800;
+      letter-spacing: -.055em;
+    }
+
+    .about__content {
+      padding: 30px 0 32px;
+    }
+
+    .about__lead {
+      margin: 0;
+      color: #353b40;
+      font-size: clamp(15px, 1.45vw, 18px);
+      font-weight: 700;
+      line-height: 1.85;
+    }
+
+    .about__motto {
+      margin: 19px 0;
+      padding: 10px 0 10px 20px;
+      border-left: 3px solid var(--orange);
+      border-radius: 0;
+      color: var(--ink);
+      background: transparent;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .about__facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(24px, 4vw, 64px);
+      margin-top: 20px;
+      border: 0;
+      background: transparent;
+    }
+
+    .about__fact {
+      position: relative;
+      min-width: 0;
+      padding: 16px 0 10px;
+      border-top: 1px solid rgba(15,23,42,.16);
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .about__fact::before {
+      display: block;
+      width: 28px;
+      height: 4px;
+      margin-bottom: 12px;
+      content: "";
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--violet), var(--blue));
+    }
+
+    .about__fact:nth-child(2)::before {
+      background: linear-gradient(90deg, var(--orange), var(--gold));
+    }
+
+    .about__fact span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .about__fact strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .about__departments {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+      align-items: center;
+    }
+
+    .about__departments > span {
+      margin-right: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .about__departments b {
+      padding: 5px 10px;
+      color: var(--ink);
+      border: 1px solid rgba(117,105,244,.12);
+      background: #eeecff;
+      border-radius: 999px;
+      font-size: 11px;
+    }
+
+    .about__departments b:nth-of-type(2n) {
+      border-color: rgba(82,212,173,.18);
+      background: #e7faf4;
+    }
+
+    .about__departments b:nth-of-type(3n) {
+      border-color: rgba(255,195,92,.2);
+      background: #fff5dc;
+    }
+
+    .section-intro {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr);
+      width: calc(100% - 64px);
+      gap: 60px;
+      margin: 0 auto 72px;
+      padding: 22px 0 20px;
+      align-items: end;
+      border-top: 0;
+      border-bottom: 1px solid rgba(15,23,42,.12);
+    }
+
+    .section-intro::after {
+      display: none;
+    }
+
+    .section-intro__number {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--violet);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .18em;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      font-size: clamp(34px, 4.4vw, 54px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .section-intro h2 { white-space: nowrap; }
+
+    .section-intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 4px 0;
+    }
+
+    .timeline::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 221px;
+      width: 4px;
+      content: "";
+      border-radius: 999px;
+      background: linear-gradient(to bottom, var(--orange), var(--violet) 38%, var(--blue) 68%, rgba(15,23,42,.1));
+    }
+
+    .year-block {
+      position: relative;
+      display: grid;
+      grid-template-columns: 185px minmax(0, 1fr);
+      column-gap: 92px;
+      padding-bottom: 104px;
+      scroll-margin-top: 28px;
+    }
+
+    .year-block:last-child { padding-bottom: 0; }
+
+    .year-label {
+      position: sticky;
+      top: 28px;
+      align-self: start;
+      text-align: right;
+    }
+
+    .year-label__value {
+      display: block;
+      font-family: "Bahnschrift", "DIN Alternate", "Arial Narrow", "Segoe UI", sans-serif;
+      font-size: clamp(38px, 4.5vw, 56px);
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      line-height: .92;
+      letter-spacing: -.035em;
+    }
+
+    .year-label__caption {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      color: var(--paper);
+      background: linear-gradient(135deg, var(--ink), #37435b);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .2em;
+    }
+
+    .year-node {
+      position: absolute;
+      top: 2px;
+      left: 207px;
+      z-index: 2;
+      width: 38px;
+      height: 38px;
+      border: 9px solid var(--paper);
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 3px var(--white), 0 7px 20px rgba(15,23,42,.16);
+    }
+
+    .year-block.is-key .year-node {
+      background: var(--orange);
+      box-shadow: 0 0 0 3px var(--white), 0 0 0 8px rgba(255,91,53,.16), 0 9px 24px rgba(15,23,42,.16);
+    }
+
+    .year-block:nth-child(3n + 2) .year-node { background: var(--violet); }
+    .year-block:nth-child(3n) .year-node { background: var(--mint); }
+    .year-block.is-key .year-node { background: var(--orange); }
+
+    .year-content { min-width: 0; }
+
+    .year-summary {
+      position: relative;
+      padding: 0 0 30px;
+    }
+
+    .year-summary::before {
+      display: block;
+      width: 42px;
+      height: 5px;
+      margin-bottom: 17px;
+      content: "";
+      background: linear-gradient(90deg, var(--orange), var(--gold));
+      border-radius: 999px;
+      transform: skewX(-25deg);
+    }
+
+    .year-summary h3 {
+      margin: 0 0 10px;
+      font-size: clamp(22px, 2.4vw, 31px);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -.04em;
+    }
+
+    .year-summary p {
+      max-width: 730px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .leader {
+      display: inline-flex;
+      width: 100%;
+      margin-top: 12px;
+      padding: 7px 9px;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(15,23,42,.1);
+      border-radius: 999px;
+      color: var(--ink);
+      background: linear-gradient(135deg, #ffffff, #f1f0ff);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: left;
+      box-shadow: 0 7px 20px rgba(15,23,42,.06);
+    }
+
+    .leader::before {
+      display: grid;
+      width: 22px;
+      height: 22px;
+      place-items: center;
+      content: "人";
+      color: var(--white);
+      background: linear-gradient(135deg, var(--violet), #4f83e8);
+      border-radius: 50%;
+      font-size: 10px;
+    }
+
+    .event-list {
+      display: grid;
+      gap: 25px;
+    }
+
+    .event-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 104px minmax(0, 1fr);
+      overflow: hidden;
+      border: 0;
+      border-radius: 24px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .event-card::before {
+      display: none;
+    }
+
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(15,23,42,.13);
+    }
+
+    .event-card::after {
+      display: none;
+    }
+
+    .event-date {
+      display: flex;
+      flex-direction: column;
+      min-height: 176px;
+      padding: 24px 12px;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      background: linear-gradient(160deg, #1b2840, #453a73);
+      text-align: center;
+    }
+
+    .event-date strong {
+      color: var(--gold);
+      font: 900 29px/1 "Arial Narrow", Arial, sans-serif;
+      letter-spacing: -.06em;
+    }
+
+    .event-date span {
+      margin-top: 10px;
+      color: rgba(255,255,255,.52);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .event-body {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(240px, .7fr) minmax(320px, 1.3fr);
+      min-width: 0;
+      overflow: hidden;
+      border: 2px solid transparent;
+      border-radius: 0 24px 24px 0;
+      background:
+        linear-gradient(var(--white), var(--white)) padding-box,
+        linear-gradient(135deg, var(--orange), var(--gold), var(--mint), var(--blue), var(--violet)) border-box;
+    }
+
+    .event-copy {
+      align-self: center;
+      padding: 29px 32px;
+    }
+
+    .event-copy h4 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .event-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .image-gallery {
+      display: grid;
+      gap: 10px;
+    }
+
+    .gallery-item {
+      position: relative;
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid rgba(15,23,42,.08);
+      border-radius: 14px;
+      background: var(--night-soft);
+    }
+
+    .gallery-open {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      border: 0;
+      color: inherit;
+      background: transparent;
+      border-radius: inherit;
+      cursor: zoom-in;
+    }
+
+    .gallery-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: var(--paper-deep);
+      border-radius: inherit;
+      filter: saturate(.9) contrast(1.04);
+      transition: transform .4s ease, filter .4s ease;
+    }
+
+    .gallery-item:hover .gallery-image {
+      filter: saturate(1) contrast(1.02);
+      transform: scale(1.035);
+    }
+
+    .gallery-item:nth-child(3n + 1) { box-shadow: 0 8px 24px rgba(117,105,244,.12); }
+    .gallery-item:nth-child(3n + 2) { box-shadow: 0 8px 24px rgba(82,212,173,.12); }
+    .gallery-item:nth-child(3n) { box-shadow: 0 8px 24px rgba(255,91,53,.1); }
+
+    .gallery-caption {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 18px 11px 8px;
+      color: var(--white);
+      background: linear-gradient(transparent, rgba(10,13,17,.84));
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .event-gallery {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      padding: 12px;
+      align-content: center;
+      border-left: 1px solid rgba(15,23,42,.07);
+      background: #f7f9fa;
+    }
+
+    .event-card.no-images .event-body { grid-template-columns: 1fr; }
+
+    .year-jump[hidden] { display: none; }
+
+    .year-jump {
+      position: fixed;
+      top: auto;
+      right: clamp(14px, 2vw, 30px);
+      bottom: clamp(20px, 3vw, 34px);
+      z-index: 120;
+      transform: none;
+    }
+
+    .year-jump__toggle {
+      display: grid;
+      width: 58px;
+      height: 58px;
+      overflow: hidden;
+      padding: 3px;
+      place-content: center;
+      border: 1px solid rgba(18,22,26,.14);
+      border-radius: 50%;
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 14px 34px rgba(15,23,42,.2);
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .year-jump__toggle:hover,
+    .year-jump.is-open .year-jump__toggle {
+      box-shadow: 0 18px 42px rgba(15,23,42,.28);
+      transform: scale(1.06);
+    }
+
+    .year-jump__logo {
+      display: block;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: contain;
+    }
+
+    .year-jump__panel {
+      position: absolute;
+      top: auto;
+      right: calc(100% + 14px);
+      bottom: 0;
+      width: 218px;
+      max-height: min(68vh, 520px);
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 16px;
+      border: 1px solid rgba(18,22,26,.1);
+      border-radius: 22px;
+      opacity: 0;
+      visibility: hidden;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 22px 60px rgba(15,23,42,.18);
+      backdrop-filter: blur(14px);
+      transform: translateX(10px) scale(.96);
+      transform-origin: right bottom;
+      transition: opacity .22s ease, transform .25s cubic-bezier(.2,.75,.25,1), visibility .22s;
+    }
+
+    .year-jump__panel::after {
+      position: absolute;
+      top: auto;
+      right: -7px;
+      bottom: 21px;
+      width: 14px;
+      height: 14px;
+      content: "";
+      border-top: 1px solid rgba(18,22,26,.1);
+      border-right: 1px solid rgba(18,22,26,.1);
+      background: rgba(255,255,255,.94);
+      transform: rotate(45deg);
+    }
+
+    .year-jump.is-open .year-jump__panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0) scale(1);
+    }
+
+    .year-jump__title {
+      display: block;
+      margin-bottom: 11px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .16em;
+    }
+
+    .year-jump__list {
+      display: grid;
+      min-width: 0;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 7px;
+    }
+
+    .year-jump__link {
+      display: grid;
+      min-width: 0;
+      min-height: 36px;
+      place-items: center;
+      border: 1px solid rgba(18,22,26,.08);
+      border-radius: 11px;
+      color: var(--ink);
+      background: #f3f6f8;
+      font: 750 12px/1 "Bahnschrift", "Segoe UI", sans-serif;
+      text-decoration: none;
+      transition: color .18s ease, background .18s ease, transform .18s ease;
+    }
+
+    .year-jump__link:hover {
+      color: var(--white);
+      background: var(--violet);
+      transform: translateY(-1px);
+    }
+
+    .year-jump__link.is-active {
+      color: var(--white);
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--orange), var(--violet));
+    }
+
+    .image-viewer[hidden] { display: none; }
+
+    .image-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      padding: 72px 88px 36px;
+      place-items: center;
+      color: var(--white);
+      background: rgba(6,9,12,.94);
+      backdrop-filter: blur(12px);
+    }
+
+    .image-viewer__stage {
+      display: grid;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      place-items: center;
+    }
+
+    .image-viewer__figure {
+      display: grid;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0;
+      place-items: center;
+      gap: 14px;
+    }
+
+    .image-viewer__image {
+      display: block;
+      max-width: min(100%, 1600px);
+      max-height: calc(100vh - 190px);
+      border: 1px solid rgba(255,255,255,.24);
+      object-fit: contain;
+      box-shadow: 0 28px 80px rgba(0,0,0,.42);
+    }
+
+    .image-viewer__caption {
+      max-width: 900px;
+      color: rgba(255,255,255,.7);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .image-viewer__close,
+    .image-viewer__nav {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 999px;
+      color: var(--white);
+      background: rgba(255,255,255,.08);
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .image-viewer__close:hover,
+    .image-viewer__nav:hover { background: var(--orange); }
+
+    .image-viewer__close {
+      top: 22px;
+      right: 26px;
+      width: 42px;
+      height: 42px;
+      font-size: 24px;
+    }
+
+    .image-viewer__nav {
+      top: 50%;
+      width: 50px;
+      height: 70px;
+      font-size: 28px;
+      transform: translateY(-50%);
+    }
+
+    .image-viewer__nav:hover { transform: translateY(-50%) scale(1.05); }
+    .image-viewer__nav--prev { left: 22px; }
+    .image-viewer__nav--next { right: 22px; }
+
+    .image-viewer__toolbar {
+      position: absolute;
+      top: 22px;
+      left: 26px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .image-viewer__count {
+      min-width: 58px;
+      color: rgba(255,255,255,.65);
+      font: 700 12px/1 Arial, sans-serif;
+      letter-spacing: .08em;
+    }
+
+    .image-viewer__download {
+      display: inline-flex;
+      min-height: 42px;
+      padding: 0 16px;
+      align-items: center;
+      gap: 8px;
+      color: var(--night);
+      background: linear-gradient(135deg, var(--blue), var(--mint));
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      text-decoration: none;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .image-viewer__download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(82,212,173,.28);
+    }
+
+    body.is-viewer-open { overflow: hidden; }
+
+    .empty-year {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 10px;
+      border: 1px solid rgba(18,22,26,.1);
+      border-radius: 999px;
+      color: #7f8589;
+      background: rgba(255,255,255,.72);
+      font-size: 11px;
+      letter-spacing: .08em;
+    }
+
+    .empty-year::before {
+      width: 7px;
+      height: 7px;
+      content: "";
+      border-radius: 50%;
+      background: var(--violet);
+    }
+
+    .footer {
+      display: flex;
+      min-height: 140px;
+      padding: 36px 28px;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.55);
+      background:
+        radial-gradient(circle at 82% 50%, rgba(112,220,244,.1), transparent 22rem),
+        var(--night);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .5s ease, transform .5s cubic-bezier(.2,.75,.25,1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero__content { grid-template-columns: minmax(0, 1fr) 300px; }
+      .hero__visual { min-height: 400px; }
+      .wheel { width: 300px; }
+      .hero__badge { right: -5px; }
+      .about__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        min-height: auto;
+        padding: 0 20px;
+      }
+
+      .hero__fade { height: 125px; }
+
+      .hero__danmaku {
+        top: 64px;
+        right: 0;
+        bottom: 118px;
+        left: 0;
+        opacity: .72;
+      }
+
+      .danmaku-item { font-size: 11px; }
+
+      .topbar { padding: 18px 0; }
+      .topbar__status { display: none; }
+
+      .hero__content {
+        display: block;
+        min-height: 0;
+        padding: 66px 0 38px;
+      }
+
+      .hero__copy {
+        position: relative;
+        z-index: 2;
+        padding-left: 0;
+      }
+      .hero__visual {
+        position: absolute;
+        top: 118px;
+        right: 2px;
+        bottom: auto;
+        z-index: 3;
+        min-height: 0;
+        margin-top: 0;
+        opacity: 1;
+      }
+
+      .wheel {
+        width: 92px;
+        padding: 5px;
+        border-color: rgba(18,22,26,.08);
+        box-shadow: 0 12px 30px rgba(54,118,150,.18);
+      }
+
+      .wheel::before,
+      .wheel::after { display: none; }
+
+      .music-indicator {
+        bottom: -7px;
+        left: 88%;
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        padding: 0;
+        justify-content: center;
+        border-color: rgba(18,22,26,.08);
+        font-size: 0;
+      }
+
+      .music-indicator::before { display: none; }
+      .music-indicator::after { content: "♪"; font-size: 15px; }
+      .hero__badge { display: none; }
+      h1 { font-size: clamp(44px, 15vw, 70px); }
+      .hero__lead {
+        max-width: 520px;
+        margin: 18px 0 22px;
+      }
+
+      .hero__meta {
+        display: grid;
+        grid-template-columns: minmax(0, .82fr) minmax(0, 1.25fr) minmax(0, .9fr);
+        gap: 6px;
+      }
+
+      .hero__meta > div,
+      .scroll-cue {
+        min-width: 0;
+        min-height: 52px;
+        padding: 7px 8px;
+        border-radius: 13px;
+        font-size: 10px;
+        line-height: 1.3;
+      }
+
+      .hero__meta > div {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .hero__meta strong {
+        margin: 0 0 4px;
+        font-size: 15px;
+        white-space: nowrap;
+      }
+
+      .scroll-cue {
+        grid-column: auto;
+        gap: 4px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .scroll-cue span { font-size: 15px; }
+
+      main {
+        width: min(100% - 28px, 650px);
+        padding: 28px 0 80px;
+      }
+
+      main::before {
+        background-image:
+          linear-gradient(
+            to bottom,
+            var(--paper) 0,
+            rgba(245,247,248,.96) 34px,
+            rgba(245,247,248,.72) 96px,
+            rgba(245,247,248,.2) 180px,
+            transparent 250px
+          ),
+          linear-gradient(rgba(52,75,91,.065) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(52,75,91,.065) 1px, transparent 1px);
+        background-size: 100% 250px, 34px 34px, 34px 34px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 0;
+        margin-bottom: 28px;
+      }
+
+      .about__heading {
+        padding: 18px 6px 20px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(18,22,26,.14);
+      }
+      .about__heading::after {
+        top: auto;
+        right: auto;
+        bottom: -4px;
+        left: 6px;
+        width: 68px;
+        height: 7px;
+      }
+      .about__index { margin-bottom: 12px; }
+      .about h2 {
+        margin: 0;
+        font-size: 36px;
+        line-height: 1.1;
+        white-space: nowrap;
+      }
+      .about h2 br { display: none; }
+      .about__content { padding: 22px 6px 18px; }
+      .about__motto { margin: 14px 0; }
+      .about__facts {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .about__fact { padding: 12px 0 8px; }
+      .about__departments { margin-top: 14px; }
+      .section-intro {
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 14px;
+        margin: 0 auto 42px;
+        padding: 12px 0 16px;
+      }
+
+      .timeline::before { left: 14px; }
+
+      .year-block {
+        display: block;
+        padding: 0 0 60px 54px;
+      }
+
+      .year-label {
+        position: static;
+        display: grid;
+        grid-template-areas:
+          "caption caption"
+          "year leader";
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 6px 12px;
+        margin-bottom: 17px;
+        align-items: center;
+        text-align: left;
+      }
+
+      .year-label__value {
+        grid-area: year;
+        font-size: 40px;
+      }
+      .year-label__caption {
+        grid-area: caption;
+        width: max-content;
+        margin: 0;
+      }
+      .year-label .leader {
+        grid-area: leader;
+        width: fit-content;
+        max-width: 100%;
+        margin: 0;
+        padding: 5px 8px;
+        font-size: 9px;
+        box-shadow: none;
+      }
+      .year-label .leader::before {
+        width: 18px;
+        height: 18px;
+        font-size: 8px;
+      }
+      .year-summary { padding-bottom: 20px; }
+      .year-summary::before { margin-bottom: 12px; }
+      .year-node { top: 0; left: -1px; }
+
+      .event-card { grid-template-columns: 70px minmax(0, 1fr); box-shadow: 0 14px 38px rgba(15,23,42,.09); }
+      .event-card::before { left: 70px; }
+      .event-date {
+        min-height: 150px;
+        flex-direction: row;
+        gap: 6px;
+        padding: 12px 6px;
+      }
+      .event-date strong {
+        font-size: 20px;
+        line-height: 1;
+        letter-spacing: -.02em;
+        text-orientation: sideways;
+        writing-mode: vertical-rl;
+      }
+      .event-date span {
+        margin-top: 0;
+        line-height: 1;
+        letter-spacing: .04em;
+        text-orientation: sideways;
+        writing-mode: vertical-rl;
+      }
+      .event-body { grid-template-columns: 1fr; }
+      .event-copy { padding: 23px 19px; }
+      .event-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+        padding: 8px;
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+
+      .event-gallery .gallery-item { border-radius: 9px; }
+      .event-gallery .gallery-image {
+        height: clamp(62px, 15vw, 92px);
+        aspect-ratio: auto;
+      }
+      .event-gallery .gallery-caption {
+        overflow: hidden;
+        padding: 12px 5px 4px;
+        font-size: 8px;
+        line-height: 1.25;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .image-viewer { padding: 70px 52px 30px; }
+      .image-viewer__nav { width: 40px; height: 58px; }
+      .image-viewer__nav--prev { left: 6px; }
+      .image-viewer__nav--next { right: 6px; }
+      .image-viewer__toolbar { top: 14px; left: 14px; }
+      .image-viewer__close { top: 14px; right: 14px; }
+      .image-viewer__image { max-height: calc(100vh - 155px); }
+
+      .year-jump {
+        top: auto;
+        right: 12px;
+        bottom: 18px;
+        transform: none;
+      }
+
+      .year-jump__toggle {
+        width: 50px;
+        height: 50px;
+      }
+
+      .year-jump__panel {
+        top: auto;
+        right: calc(100% + 10px);
+        bottom: 0;
+        width: min(236px, calc(100vw - 82px));
+        max-width: calc(100vw - 82px);
+        max-height: min(58vh, 390px);
+        padding: 14px;
+        border-radius: 18px;
+        transform: translateX(10px) scale(.96);
+        transform-origin: right bottom;
+      }
+
+      .year-jump__panel::after {
+        top: auto;
+        right: -7px;
+        bottom: 18px;
+        transform: rotate(45deg);
+      }
+
+      .year-jump.is-open .year-jump__panel { transform: translateX(0) scale(1); }
+      .year-jump__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    }
+
+    @media (max-width: 420px) {
+      .brand { font-size: 13px; }
+      .wheel { width: 78px; }
+      .music-indicator { width: 26px; height: 26px; min-width: 26px; }
+      .hero__meta strong { font-size: 14px; }
+      .year-block { padding-left: 46px; }
+      .event-card { grid-template-columns: 58px minmax(0, 1fr); }
+      .event-card::before { left: 58px; }
+      .section-intro h2 { font-size: 29px; }
+      .event-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal {
+        opacity: 1;
+        filter: none;
+        transform: none;
+        transition: none;
+      }
+      .event-card { transition: none; }
+      .hero__logo { animation: none; }
+      .hero__danmaku { display: none; }
+      .gallery-image { transition: none; }
+      .image-viewer__close,
+      .image-viewer__nav,
+      .image-viewer__download { transition: none; }
+      .year-jump__toggle,
+      .year-jump__panel,
+      .year-jump__link { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="topbar">
+      <a class="brand" href="https://baike.baidu.com/item/%E5%95%86%E4%B8%98%E5%B7%A5%E5%AD%A6%E9%99%A2%E8%BD%AE%E6%BB%91%E5%8D%8F%E4%BC%9A/22438092" target="_blank" rel="noopener noreferrer" title="查看商丘工学院轮滑协会百度百科">
+        <img class="brand__logo" src="club-logo.png" alt="">商丘工学院轮滑协会
+      </a>
+      <div class="topbar__status">持续更新</div>
+    </div>
+    <div id="hero-danmaku" class="hero__danmaku" aria-hidden="true"></div>
+    <div class="hero__content">
+      <div class="hero__copy">
+        <p class="eyebrow">Skating Club · Since 2013</p>
+        <h1>沿着热爱<br><em>一路向前</em></h1>
+        <p class="hero__lead">商丘工学院轮滑协会发展历程。从最初的一群同好，到一届又一届的并肩前行，每一道轮迹都值得被记住。</p>
+        <div class="hero__meta">
+          <div><strong>2013</strong>故事开始</div>
+          <div><strong>2017.10.23</strong>协会正式成立</div>
+          <a class="scroll-cue" href="#history">进入时间轴 <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <button id="music-toggle" class="wheel" type="button" aria-label="播放音乐" aria-pressed="false">
+          <img class="hero__logo" src="club-logo.png" alt="商丘工学院轮滑协会标志">
+          <span class="music-indicator">点击播放音乐</span>
+        </button>
+        <audio id="club-music" src="music.m4a" preload="metadata"></audio>
+        <div class="hero__badge">
+          <small>OFFICIALLY FOUNDED</small>
+          <strong>2017.10.23</strong>
+        </div>
+      </div>
+    </div>
+    <div class="hero__fade" aria-hidden="true"></div>
+  </header>
+
+  <main id="history">
+    <section class="about" aria-labelledby="about-title">
+      <div class="about__heading">
+        <span class="about__index">00 / ABOUT THE CLUB</span>
+        <h2 id="about-title">关于<br>协会</h2>
+      </div>
+      <div class="about__content">
+        <p class="about__lead">商丘工学院轮滑协会成立于 2017 年 10 月 23 日，隶属于大学生社团联合会。协会致力于促进校内轮滑爱好者交流，以丰富大学生课余生活、培养健康兴趣为宗旨。</p>
+        <blockquote class="about__motto">“以轮滑健身，以轮滑习德，以轮滑养性”</blockquote>
+        <div class="about__facts" aria-label="协会基本信息">
+          <div class="about__fact"><span>成立日期</span><strong>2017 年 10 月 23 日</strong></div>
+          <div class="about__fact"><span>组织级别</span><strong>校级学生社团</strong></div>
+        </div>
+        <div class="about__departments" aria-label="成立初期部门">
+          <span>成立初期部门</span>
+          <b>技术安全部</b><b>宣传部</b><b>秘书部</b><b>外联部</b><b>组织部</b>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-intro reveal" aria-labelledby="history-title">
+      <div>
+        <span class="section-intro__number">01 / CLUB TIMELINE</span>
+        <h2 id="history-title">我们的发展历程</h2>
+      </div>
+      <p>以年份为主轴，记录每一次相遇、成长与传承。只有录入真实事件的月份，才会在对应年份下出现，让每一个节点都有属于它的故事。</p>
+    </section>
+
+    <section id="timeline" class="timeline" aria-label="商丘工学院轮滑协会发展时间轴"></section>
+  </main>
+
+  <nav id="year-jump" class="year-jump" aria-label="按年份快速定位" hidden>
+    <div id="year-jump-panel" class="year-jump__panel" aria-hidden="true">
+      <span class="year-jump__title">QUICK YEAR · 年份定位</span>
+      <div id="year-jump-list" class="year-jump__list"></div>
+    </div>
+    <button id="year-jump-toggle" class="year-jump__toggle" type="button" aria-expanded="false" aria-controls="year-jump-panel" aria-label="打开年份快速定位">
+      <img class="year-jump__logo" src="club-logo.png" alt="" aria-hidden="true">
+    </button>
+  </nav>
+
+  <div id="image-viewer" class="image-viewer" role="dialog" aria-modal="true" aria-label="图片全屏预览" hidden>
+    <div class="image-viewer__toolbar">
+      <span id="image-viewer-count" class="image-viewer__count"></span>
+      <a id="image-viewer-download" class="image-viewer__download" href="#" download>↓ 下载原图</a>
+    </div>
+    <button class="image-viewer__close" type="button" aria-label="关闭图片预览">×</button>
+    <button class="image-viewer__nav image-viewer__nav--prev" type="button" aria-label="上一张图片">‹</button>
+    <div class="image-viewer__stage">
+      <figure class="image-viewer__figure">
+        <img id="image-viewer-image" class="image-viewer__image" src="" alt="">
+        <figcaption id="image-viewer-caption" class="image-viewer__caption"></figcaption>
+      </figure>
+    </div>
+    <button class="image-viewer__nav image-viewer__nav--next" type="button" aria-label="下一张图片">›</button>
+  </div>
+
+  <footer class="footer">SHANGQIU INSTITUTE OF TECHNOLOGY · SKATING CLUB · 以轮会友，滑向热爱</footer>
+
+  <script src="history-data.js"></script>
+  <script>
+    const siteConfig = window.SITE_CONFIG || {};
+    const heroBackground = typeof siteConfig.heroBackground === "string"
+      ? siteConfig.heroBackground.trim()
+      : "";
+
+    if (heroBackground) {
+      document.documentElement.style.setProperty(
+        "--hero-background-image",
+        `url(${JSON.stringify(heroBackground)})`
+      );
+    }
+
+    const danmakuNames = Array.isArray(siteConfig.danmakuNames)
+      ? [...new Set(siteConfig.danmakuNames.map((name) => String(name).trim()).filter(Boolean))]
+      : [];
+    const danmakuContainer = document.querySelector("#hero-danmaku");
+    const heroElement = document.querySelector(".hero");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (danmakuContainer && heroElement && danmakuNames.length && !reduceMotion) {
+      let danmakuTimer = null;
+      let danmakuRunning = false;
+      let randomNamePool = [];
+      let lastDanmakuName = "";
+
+      const getRandomName = () => {
+        if (!randomNamePool.length) {
+          randomNamePool = [...danmakuNames];
+          for (let index = randomNamePool.length - 1; index > 0; index -= 1) {
+            const randomIndex = Math.floor(Math.random() * (index + 1));
+            [randomNamePool[index], randomNamePool[randomIndex]] = [
+              randomNamePool[randomIndex],
+              randomNamePool[index]
+            ];
+          }
+
+          const lastIndex = randomNamePool.length - 1;
+          if (lastIndex > 0 && randomNamePool[lastIndex] === lastDanmakuName) {
+            [randomNamePool[0], randomNamePool[lastIndex]] = [
+              randomNamePool[lastIndex],
+              randomNamePool[0]
+            ];
+          }
+        }
+
+        lastDanmakuName = randomNamePool.pop();
+        return lastDanmakuName;
+      };
+
+      const getRandomTop = (containerHeight) => {
+        const minimumTop = 12;
+        const maximumTop = Math.max(minimumTop, containerHeight - 28);
+        const activeTops = [...danmakuContainer.children]
+          .map((element) => Number(element.dataset.top))
+          .filter(Number.isFinite);
+        let randomTop = minimumTop;
+
+        for (let attempt = 0; attempt < 12; attempt += 1) {
+          randomTop = minimumTop + Math.random() * (maximumTop - minimumTop);
+          if (activeTops.every((top) => Math.abs(top - randomTop) >= 30)) break;
+        }
+
+        return randomTop;
+      };
+
+      const createDanmaku = () => {
+        if (!danmakuRunning) return;
+
+        /* 同屏数量设置上限，避免极端情况下积累过多元素。 */
+        if (danmakuContainer.childElementCount < 10) {
+          const item = document.createElement("span");
+          const containerHeight = Math.max(120, danmakuContainer.clientHeight);
+          const randomTop = getRandomTop(containerHeight);
+
+          item.className = "danmaku-item";
+          item.textContent = getRandomName();
+          item.dataset.top = String(randomTop);
+          item.style.setProperty("--danmaku-top", `${randomTop}px`);
+          item.style.setProperty("--danmaku-duration", `${11.5 + Math.random() * 2.7}s`);
+
+          const removeItem = () => item.remove();
+          item.addEventListener("animationend", removeItem, { once: true });
+          item.addEventListener("animationcancel", removeItem, { once: true });
+          danmakuContainer.appendChild(item);
+        }
+
+        danmakuTimer = window.setTimeout(createDanmaku, 1800);
+      };
+
+      const startDanmaku = () => {
+        if (danmakuRunning || document.hidden) return;
+        danmakuRunning = true;
+        createDanmaku();
+      };
+
+      const stopDanmaku = () => {
+        danmakuRunning = false;
+        window.clearTimeout(danmakuTimer);
+        danmakuTimer = null;
+        danmakuContainer.replaceChildren();
+      };
+
+      const heroDanmakuObserver = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) startDanmaku();
+        else stopDanmaku();
+      }, { threshold: .05 });
+
+      heroDanmakuObserver.observe(heroElement);
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) stopDanmaku();
+        else if (heroElement.getBoundingClientRect().bottom > 0) startDanmaku();
+      });
+    }
+
+    const musicToggle = document.querySelector("#music-toggle");
+    const clubMusic = document.querySelector("#club-music");
+    const musicIndicator = musicToggle.querySelector(".music-indicator");
+
+    function setMusicState(isPlaying) {
+      musicToggle.classList.toggle("is-playing", isPlaying);
+      musicToggle.setAttribute("aria-pressed", String(isPlaying));
+      musicToggle.setAttribute("aria-label", isPlaying ? "暂停音乐" : "播放音乐");
+      musicIndicator.textContent = isPlaying ? "正在播放 · 点击暂停" : "点击播放音乐";
+    }
+
+    musicToggle.addEventListener("click", async () => {
+      if (!clubMusic.paused) {
+        clubMusic.pause();
+        return;
+      }
+
+      try {
+        await clubMusic.play();
+      } catch (error) {
+        setMusicState(false);
+        musicIndicator.textContent = "音频暂时无法播放";
+        console.error("音乐播放失败：", error);
+      }
+    });
+
+    clubMusic.addEventListener("play", () => setMusicState(true));
+    clubMusic.addEventListener("pause", () => setMusicState(false));
+    clubMusic.addEventListener("ended", () => setMusicState(false));
+
+    const historyData = Array.isArray(window.HISTORY_DATA) ? window.HISTORY_DATA : [];
+    const timeline = document.querySelector("#timeline");
+
+    function escapeHtml(value = "") {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function getValidImages(images) {
+      return Array.isArray(images)
+        ? images.filter((image) => image && typeof image.file === "string" && image.file.trim())
+        : [];
+    }
+
+    function renderEventGallery(images, year, eventTitle) {
+      if (!images.length) return "";
+
+      return `
+        <div class="image-gallery event-gallery" aria-label="${escapeHtml(eventTitle)}图片">
+          ${images.map((image, index) => {
+            const imagePath = `${year}/${image.file.trim()}`;
+            const imageAlt = image.alt || `${eventTitle}第${index + 1}张图片`;
+            return `
+              <figure class="gallery-item">
+                <button class="gallery-open" type="button" aria-label="全屏查看：${escapeHtml(imageAlt)}">
+                  <img class="gallery-image" src="${escapeHtml(imagePath)}" alt="${escapeHtml(imageAlt)}" loading="lazy" onerror="const gallery=this.closest('.image-gallery'); const card=this.closest('.event-card'); this.closest('.gallery-item').remove(); if (gallery && !gallery.children.length) { gallery.remove(); card.classList.add('no-images'); }">
+                </button>
+                ${image.caption ? `<figcaption class="gallery-caption">${escapeHtml(image.caption)}</figcaption>` : ""}
+              </figure>`;
+          }).join("")}
+        </div>`;
+    }
+
+    function renderEvent(event, year) {
+      const month = String(event.month).padStart(2, "0");
+      const dayText = event.day ? `${month}.${String(event.day).padStart(2, "0")}` : month;
+      const dateLabel = event.day ? `${year}年${event.month}月${event.day}日` : `${year}年${event.month}月`;
+      const images = getValidImages(event.images);
+
+      return `
+        <article class="event-card reveal${images.length ? "" : " no-images"}">
+          <time class="event-date" datetime="${year}-${month}${event.day ? `-${String(event.day).padStart(2, "0")}` : ""}">
+            <strong>${escapeHtml(dayText)}</strong>
+            <span>${escapeHtml(dateLabel)}</span>
+          </time>
+          <div class="event-body">
+            <div class="event-copy">
+              <h4>${escapeHtml(event.title)}</h4>
+              ${event.description ? `<p>${escapeHtml(event.description)}</p>` : ""}
+            </div>
+            ${renderEventGallery(images, year, event.title)}
+          </div>
+        </article>`;
+    }
+
+    function renderTimeline(data) {
+      timeline.innerHTML = data
+        .slice()
+        .sort((a, b) => a.year - b.year)
+        .map((item) => {
+          const events = Array.isArray(item.events)
+            ? item.events.slice().sort((a, b) => (a.month * 31 + (a.day || 0)) - (b.month * 31 + (b.day || 0)))
+            : [];
+
+          return `
+            <article id="year-${item.year}" class="year-block${item.key ? " is-key" : ""}" data-year="${item.year}">
+              <div class="year-label reveal">
+                <span class="year-label__caption">年度节点</span>
+                <time class="year-label__value" datetime="${item.year}">${item.year}</time>
+                ${item.leader ? `<span class="leader">${escapeHtml(item.leader)}</span>` : ""}
+              </div>
+              <span class="year-node" aria-hidden="true"></span>
+              <div class="year-content">
+                <header class="year-summary reveal">
+                  <h3>${escapeHtml(item.title)}</h3>
+                  ${item.summary ? `<p>${escapeHtml(item.summary)}</p>` : ""}
+                </header>
+                ${events.length
+                  ? `<div class="event-list">${events.map((event) => renderEvent(event, item.year)).join("")}</div>`
+                  : `<span class="empty-year reveal">月份事件待记录</span>`}
+              </div>
+            </article>`;
+        })
+        .join("");
+    }
+
+    renderTimeline(historyData);
+
+    const yearJump = document.querySelector("#year-jump");
+    const yearJumpToggle = document.querySelector("#year-jump-toggle");
+    const yearJumpPanel = document.querySelector("#year-jump-panel");
+    const yearJumpList = document.querySelector("#year-jump-list");
+    const jumpYears = [...new Set(
+      historyData
+        .map((item) => Number(item.year))
+        .filter(Number.isFinite)
+    )].sort((a, b) => a - b);
+
+    if (jumpYears.length) {
+      yearJump.hidden = false;
+      yearJumpList.innerHTML = jumpYears
+        .map((year) => `<a class="year-jump__link" href="#year-${year}" data-year="${year}">${year}</a>`)
+        .join("");
+
+      const closeYearJump = (returnFocus = false) => {
+        yearJump.classList.remove("is-open");
+        yearJumpToggle.setAttribute("aria-expanded", "false");
+        yearJumpToggle.setAttribute("aria-label", "打开年份快速定位");
+        yearJumpPanel.setAttribute("aria-hidden", "true");
+        if (returnFocus) yearJumpToggle.focus();
+      };
+
+      const openYearJump = () => {
+        yearJump.classList.add("is-open");
+        yearJumpToggle.setAttribute("aria-expanded", "true");
+        yearJumpToggle.setAttribute("aria-label", "关闭年份快速定位");
+        yearJumpPanel.setAttribute("aria-hidden", "false");
+        yearJumpList.querySelector(".year-jump__link")?.focus();
+      };
+
+      yearJumpToggle.addEventListener("click", () => {
+        if (yearJump.classList.contains("is-open")) closeYearJump();
+        else openYearJump();
+      });
+
+      yearJumpList.addEventListener("click", (event) => {
+        const link = event.target.closest(".year-jump__link");
+        if (!link) return;
+
+        const target = document.querySelector(link.getAttribute("href"));
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+        history.replaceState(null, "", link.getAttribute("href"));
+        closeYearJump(true);
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!yearJump.contains(event.target)) closeYearJump();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && yearJump.classList.contains("is-open")) {
+          closeYearJump(true);
+        }
+      });
+
+      const setActiveJumpYear = (year) => {
+        yearJumpList.querySelectorAll(".year-jump__link").forEach((link) => {
+          const isActive = link.dataset.year === String(year);
+          link.classList.toggle("is-active", isActive);
+          if (isActive) link.setAttribute("aria-current", "true");
+          else link.removeAttribute("aria-current");
+        });
+      };
+
+      const yearJumpObserver = new IntersectionObserver((entries) => {
+        const currentEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top))[0];
+        if (currentEntry) setActiveJumpYear(currentEntry.target.dataset.year);
+      }, { rootMargin: "-16% 0px -68% 0px", threshold: 0 });
+
+      timeline.querySelectorAll(".year-block").forEach((block) => yearJumpObserver.observe(block));
+    }
+
+    const imageViewer = document.querySelector("#image-viewer");
+    const viewerImage = document.querySelector("#image-viewer-image");
+    const viewerCaption = document.querySelector("#image-viewer-caption");
+    const viewerCount = document.querySelector("#image-viewer-count");
+    const viewerDownload = document.querySelector("#image-viewer-download");
+    const viewerClose = imageViewer.querySelector(".image-viewer__close");
+    const viewerPrevious = imageViewer.querySelector(".image-viewer__nav--prev");
+    const viewerNext = imageViewer.querySelector(".image-viewer__nav--next");
+    let viewerItems = [];
+    let viewerIndex = 0;
+    let viewerLastFocus = null;
+
+    function updateImageViewer() {
+      const button = viewerItems[viewerIndex];
+      const sourceImage = button.querySelector(".gallery-image");
+      const caption = button.closest(".gallery-item").querySelector(".gallery-caption");
+      const sourcePath = sourceImage.getAttribute("src");
+
+      viewerImage.src = sourcePath;
+      viewerImage.alt = sourceImage.alt;
+      viewerCaption.textContent = caption ? caption.textContent : sourceImage.alt;
+      viewerCount.textContent = `${viewerIndex + 1} / ${viewerItems.length}`;
+      viewerDownload.href = sourcePath;
+      viewerDownload.download = sourcePath.split("/").pop() || "image";
+      viewerPrevious.hidden = viewerItems.length < 2;
+      viewerNext.hidden = viewerItems.length < 2;
+    }
+
+    function openImageViewer(button) {
+      viewerItems = Array.from(button.closest(".event-gallery").querySelectorAll(".gallery-open"));
+      viewerIndex = viewerItems.indexOf(button);
+      viewerLastFocus = button;
+      updateImageViewer();
+      imageViewer.hidden = false;
+      document.body.classList.add("is-viewer-open");
+      viewerClose.focus();
+    }
+
+    function closeImageViewer() {
+      imageViewer.hidden = true;
+      viewerImage.src = "";
+      document.body.classList.remove("is-viewer-open");
+      if (viewerLastFocus && document.contains(viewerLastFocus)) viewerLastFocus.focus();
+    }
+
+    function moveImageViewer(step) {
+      viewerIndex = (viewerIndex + step + viewerItems.length) % viewerItems.length;
+      updateImageViewer();
+    }
+
+    timeline.addEventListener("click", (event) => {
+      const button = event.target.closest(".gallery-open");
+      if (button) openImageViewer(button);
+    });
+
+    viewerClose.addEventListener("click", closeImageViewer);
+    viewerPrevious.addEventListener("click", () => moveImageViewer(-1));
+    viewerNext.addEventListener("click", () => moveImageViewer(1));
+    imageViewer.addEventListener("click", (event) => {
+      if (event.target === imageViewer || event.target.classList.contains("image-viewer__stage")) {
+        closeImageViewer();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (imageViewer.hidden) return;
+      if (event.key === "Escape") closeImageViewer();
+      if (event.key === "ArrowLeft" && viewerItems.length > 1) moveImageViewer(-1);
+      if (event.key === "ArrowRight" && viewerItems.length > 1) moveImageViewer(1);
+    });
+
+    const canUseSmoothWheel = window.matchMedia("(pointer: fine)").matches
+      && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (canUseSmoothWheel) {
+      const smoothScrollOptions = {
+        animationTime: 1200,
+        stepSize: 100,
+        pulseScale: 4,
+        accelerationDelta: 50,
+        accelerationMax: 3
+      };
+      let scrollQueue = [];
+      let scrollFrame = null;
+      let pulseNormalize = 1;
+      let lastWheelTime = 0;
+      let acceleration = 1;
+      let lastDirection = 0;
+
+      const pulseCore = (value) => {
+        const scaled = value * smoothScrollOptions.pulseScale;
+        if (scaled < 1) return scaled - (1 - Math.exp(-scaled));
+        const start = Math.exp(-1);
+        return start + (1 - Math.exp(-(scaled - 1))) * (1 - start);
+      };
+
+      pulseNormalize = 1 / pulseCore(1);
+      const pulse = (value) => {
+        if (value >= 1) return 1;
+        if (value <= 0) return 0;
+        return pulseCore(value) * pulseNormalize;
+      };
+
+      const runSmoothScroll = (time) => {
+        let frameDistance = 0;
+
+        scrollQueue = scrollQueue.filter((item) => {
+          const progress = Math.min(1, (time - item.start) / smoothScrollOptions.animationTime);
+          const travelled = item.distance * pulse(progress);
+          frameDistance += travelled - item.travelled;
+          item.travelled = travelled;
+          return progress < 1;
+        });
+
+        if (Math.abs(frameDistance) > .01) {
+          window.scrollBy({ top: frameDistance, behavior: "instant" });
+        }
+
+        if (scrollQueue.length) scrollFrame = requestAnimationFrame(runSmoothScroll);
+        else {
+          scrollFrame = null;
+          lastDirection = 0;
+          acceleration = 1;
+        }
+      };
+
+      window.addEventListener("wheel", (event) => {
+        if (event.ctrlKey || !imageViewer.hidden || Math.abs(event.deltaY) < 1) return;
+
+        event.preventDefault();
+        const unit = event.deltaMode === 1 ? 40 : event.deltaMode === 2 ? window.innerHeight : 1;
+        const rawDelta = event.deltaY * unit;
+        const direction = Math.sign(rawDelta);
+        const now = performance.now();
+        const mouseLikeWheel = event.deltaMode !== 0 || Math.abs(rawDelta) >= 40;
+
+        if (direction !== lastDirection) {
+          scrollQueue = [];
+          acceleration = 1;
+        } else if (mouseLikeWheel && now - lastWheelTime < smoothScrollOptions.accelerationDelta) {
+          acceleration = Math.min(smoothScrollOptions.accelerationMax, acceleration + .35);
+        } else if (now - lastWheelTime >= smoothScrollOptions.accelerationDelta) {
+          acceleration = 1;
+        }
+
+        const baseDistance = mouseLikeWheel
+          ? direction * smoothScrollOptions.stepSize
+          : rawDelta * 1.5;
+        const pendingDistance = scrollQueue.reduce(
+          (total, item) => total + item.distance - item.travelled,
+          0
+        );
+        const availableDistance = Math.max(0, 360 - Math.abs(pendingDistance));
+        const distance = direction * Math.min(Math.abs(baseDistance * acceleration), availableDistance);
+
+        if (Math.abs(distance) > .5) {
+          scrollQueue.push({ distance, travelled: 0, start: now });
+        }
+
+        lastWheelTime = now;
+        lastDirection = direction;
+        if (scrollFrame === null) scrollFrame = requestAnimationFrame(runSmoothScroll);
+      }, { passive: false });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .04, rootMargin: "0px 0px 8% 0px" });
+
+    document.querySelectorAll(".reveal")
+      .forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
