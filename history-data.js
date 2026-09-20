@@ -271,7 +271,12 @@ window.HISTORY_DATA = [
         images: [
           { file: "1.png", alt: "2014年轮滑活动影像1", caption: "2014 年影像 · 01" },
           { file: "2.png", alt: "2014年轮滑活动影像2", caption: "2014 年影像 · 02" },
-          { file: "3.png", alt: "2014年轮滑活动影像3", caption: "2014 年影像 · 03" }
+          { file: "3.png", alt: "2014年轮滑活动影像3", caption: "2014 年影像 · 03" },
+          { file: "4.jpeg", alt: "2014年轮滑活动影像4", caption: "2014 年影像 · 04" },
+          { file: "5.jpeg", alt: "2014年轮滑活动影像5", caption: "2014 年影像 · 05" },
+          { file: "6.jpeg", alt: "2014年轮滑活动影像6", caption: "2014 年影像 · 06" },
+          { file: "7.jpeg", alt: "2014年轮滑活动影像7", caption: "2014 年影像 · 07" },
+          { file: "8.jpeg", alt: "2014年轮滑活动影像8", caption: "2014 年影像 · 08" }
         ]
       }
     ]
