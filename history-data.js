@@ -11,6 +11,9 @@
  * - eyebrow、title、notice：弹窗提示文字
  * - contacts：联系人数组；复制对象即可继续增加联系人
  *
+ * douyin：官方抖音账号弹窗。
+ * - image：账号二维码图片，图片放在网站根目录
+ *
  * danmakuNames：首屏循环弹幕的人名数组。
  * - 每个名字使用英文逗号分隔
  * - 删除某一项即可停止展示该名字
@@ -19,14 +22,23 @@
 window.SITE_CONFIG = {
   heroBackground: "背景.webp",
   contact: {
-    triggerLabel: "联系网站管理员",
+    triggerLabel: "联系方式",
     eyebrow: "温馨提示",
     title: "微信联系方式",
     notice: "添加好友请备注来意",
     contacts: [
       { label: "管理员", value: "You-Bloved" },
-      { label: "当任会长", value: "qaz20060106qaz" }
+      { label: "上任会长", value: "qaz20060106qaz" },
+      { label: "当任会长", value: "ZL16627631209" }
     ]
+  },
+  douyin: {
+    triggerLabel: "官方抖音账号",
+    eyebrow: "OFFICIAL DOUYIN",
+    title: "官方抖音账号",
+    notice: "打开抖音扫一扫，关注商丘工学院轮滑协会",
+    image: "抖音.jpg",
+    alt: "商丘工学院轮滑协会官方抖音账号二维码"
   },
   danmakuNames: [
     "周志彬",
@@ -258,6 +270,16 @@ window.HISTORY_DATA = [
           { file: "图片5.png", alt: "2012年秋商工轮舞家族初创影像4", caption: "商工轮舞家族 · 04" },
           { file: "图片6.png", alt: "2012年秋商工轮舞家族初创影像5", caption: "商工轮舞家族 · 05" },
           { file: "图片7.png", alt: "2012年秋商工轮舞家族初创影像6", caption: "商工轮舞家族 · 06" }
+        ]
+      },
+      {
+        title: "年度影像记录",
+        images: [
+          { file: "8.jpg", alt: "2012年轮滑活动影像8", caption: "2012 年影像 · 08" },
+          { file: "9.jpg", alt: "2012年轮滑活动影像9", caption: "2012 年影像 · 09" },
+          { file: "10.jpg", alt: "2012年轮滑活动影像10", caption: "2012 年影像 · 10" },
+          { file: "11.jpg", alt: "2012年轮滑活动影像11", caption: "2012 年影像 · 11" },
+          { file: "12.jpg", alt: "2012年轮滑活动影像12", caption: "2012 年影像 · 12" }
         ]
       }
     ]

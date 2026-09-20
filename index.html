@@ -196,7 +196,7 @@
       gap: 16px;
     }
 
-    .admin-contact-trigger {
+    .topbar-action-trigger {
       padding: 0 16px 0 0;
       border: 0;
       border-right: 1px solid rgba(18,22,26,.16);
@@ -209,12 +209,12 @@
       transition: color .2s ease, opacity .2s ease;
     }
 
-    .admin-contact-trigger:hover {
+    .topbar-action-trigger:hover {
       color: var(--orange);
       opacity: .82;
     }
 
-    .admin-contact-trigger:focus-visible {
+    .topbar-action-trigger:focus-visible {
       outline: 2px solid var(--orange);
       outline-offset: 5px;
     }
@@ -1312,7 +1312,7 @@
 
     .contact-modal__panel {
       position: relative;
-      width: min(420px, 100%);
+      width: min(620px, 100%);
       padding: 32px;
       border: 1px solid rgba(255,255,255,.76);
       border-radius: 26px;
@@ -1345,7 +1345,7 @@
 
     .contact-modal__contacts {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
@@ -1390,6 +1390,29 @@
     }
 
     .contact-modal__close:hover { color: var(--white); background: var(--orange); }
+
+    .douyin-modal .contact-modal__panel {
+      width: min(460px, 100%);
+      text-align: center;
+    }
+
+    .douyin-modal__image-wrap {
+      display: grid;
+      min-height: 180px;
+      padding: 12px;
+      place-items: center;
+      border: 1px solid rgba(18,22,26,.1);
+      border-radius: 20px;
+      background: #f5f7f8;
+    }
+
+    .douyin-modal__image {
+      display: block;
+      width: min(100%, 320px);
+      max-height: min(58vh, 430px);
+      border-radius: 14px;
+      object-fit: contain;
+    }
 
     body.is-viewer-open,
     body.is-contact-open { overflow: hidden; }
@@ -1470,8 +1493,8 @@
 
       .topbar { padding: 18px 0; }
       .topbar__status { display: none; }
-      .topbar__actions { gap: 0; }
-      .admin-contact-trigger {
+      .topbar__actions { gap: 10px; }
+      .topbar-action-trigger {
         padding-right: 0;
         border-right: 0;
         font-size: 10px;
@@ -1875,7 +1898,8 @@
         <img class="brand__logo" src="club-logo.png" alt="">商丘工学院轮滑协会
       </a>
       <div class="topbar__actions">
-        <button id="admin-contact-trigger" class="admin-contact-trigger" type="button" aria-haspopup="dialog" aria-controls="contact-modal" aria-expanded="false"></button>
+        <button id="admin-contact-trigger" class="topbar-action-trigger" type="button" aria-haspopup="dialog" aria-controls="contact-modal" aria-expanded="false"></button>
+        <button id="douyin-trigger" class="topbar-action-trigger" type="button" aria-haspopup="dialog" aria-controls="douyin-modal" aria-expanded="false"></button>
         <div class="topbar__status">由各届会长持续更新</div>
       </div>
     </div>
@@ -1954,6 +1978,18 @@
       <h2 id="contact-modal-title"></h2>
       <p id="contact-modal-notice" class="contact-modal__notice"></p>
       <div id="contact-modal-contacts" class="contact-modal__contacts"></div>
+    </section>
+  </div>
+
+  <div id="douyin-modal" class="contact-modal douyin-modal" role="dialog" aria-modal="true" aria-labelledby="douyin-modal-title" hidden>
+    <section class="contact-modal__panel">
+      <button class="contact-modal__close" type="button">×</button>
+      <span id="douyin-modal-eyebrow" class="contact-modal__eyebrow"></span>
+      <h2 id="douyin-modal-title"></h2>
+      <p id="douyin-modal-notice" class="contact-modal__notice"></p>
+      <div class="douyin-modal__image-wrap">
+        <img id="douyin-modal-image" class="douyin-modal__image" alt="" decoding="async">
+      </div>
     </section>
   </div>
 
@@ -2380,6 +2416,54 @@
     });
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && !contactModal.hidden) closeContactModal();
+    });
+
+    const douyinTrigger = document.querySelector("#douyin-trigger");
+    const douyinModal = document.querySelector("#douyin-modal");
+    const douyinClose = douyinModal.querySelector(".contact-modal__close");
+    const douyinEyebrow = document.querySelector("#douyin-modal-eyebrow");
+    const douyinTitle = document.querySelector("#douyin-modal-title");
+    const douyinNotice = document.querySelector("#douyin-modal-notice");
+    const douyinImage = document.querySelector("#douyin-modal-image");
+    const douyinConfig = siteConfig.douyin && typeof siteConfig.douyin === "object"
+      ? siteConfig.douyin
+      : {};
+    const douyinConfigTitle = String(douyinConfig.title || "官方抖音账号").trim();
+    const douyinImagePath = String(douyinConfig.image || "").trim();
+    let douyinLastFocus = null;
+
+    douyinTrigger.textContent = String(douyinConfig.triggerLabel || douyinConfigTitle).trim();
+    douyinEyebrow.textContent = String(douyinConfig.eyebrow || "").trim();
+    douyinEyebrow.hidden = !douyinEyebrow.textContent;
+    douyinTitle.textContent = douyinConfigTitle;
+    douyinNotice.textContent = String(douyinConfig.notice || "").trim();
+    douyinNotice.hidden = !douyinNotice.textContent;
+    douyinImage.alt = String(douyinConfig.alt || douyinConfigTitle).trim();
+    douyinClose.setAttribute("aria-label", `关闭${douyinConfigTitle}`);
+
+    function openDouyinModal() {
+      douyinLastFocus = document.activeElement;
+      if (douyinImagePath && !douyinImage.getAttribute("src")) douyinImage.src = douyinImagePath;
+      douyinModal.hidden = false;
+      douyinTrigger.setAttribute("aria-expanded", "true");
+      document.body.classList.add("is-contact-open");
+      douyinClose.focus();
+    }
+
+    function closeDouyinModal() {
+      douyinModal.hidden = true;
+      douyinTrigger.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("is-contact-open");
+      if (douyinLastFocus && document.contains(douyinLastFocus)) douyinLastFocus.focus();
+    }
+
+    douyinTrigger.addEventListener("click", openDouyinModal);
+    douyinClose.addEventListener("click", closeDouyinModal);
+    douyinModal.addEventListener("click", (event) => {
+      if (event.target === douyinModal) closeDouyinModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !douyinModal.hidden) closeDouyinModal();
     });
 
     const imageViewer = document.querySelector("#image-viewer");
