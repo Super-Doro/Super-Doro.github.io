@@ -522,7 +522,7 @@ window.HISTORY_DATA = [
     year: 2025,
     title: "十四年轮迹",
     summary: "从 2011 到 2025，属于协会的故事走过十四年。相关纪念活动与影像资料可在这里补充。",
-    leader: "负责人：刘文彬",
+    leader: "负责人：刘文彬 | 田盼盼",
     key: true,
     events: []
   },
@@ -530,7 +530,7 @@ window.HISTORY_DATA = [
     year: 2026,
     title: "故事仍在继续",
     summary: "新一程正在书写。欢迎继续补充这一年的活动、成员与难忘瞬间。",
-    leader: "负责人：张资灵",
+    leader: "负责人：张资灵 | 田盼盼",
     key: false,
     events: []
   }
