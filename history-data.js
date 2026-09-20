@@ -17,7 +17,7 @@
  * - 写成空数组 [] 即可关闭弹幕
  */
 window.SITE_CONFIG = {
-  heroBackground: "背景.png",
+  heroBackground: "背景.webp",
   contact: {
     triggerLabel: "联系网站管理员",
     eyebrow: "温馨提示",

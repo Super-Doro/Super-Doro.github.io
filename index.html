@@ -1523,10 +1523,20 @@
         justify-content: center;
         border-color: rgba(18,22,26,.08);
         font-size: 0;
+        line-height: 1;
       }
 
       .music-indicator::before { display: none; }
-      .music-indicator::after { content: "♪"; font-size: 15px; }
+      .music-indicator::after {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        content: "♪";
+        font-size: 15px;
+        line-height: 1;
+        transform: translateY(-1px);
+      }
       .hero__badge { display: none; }
       h1 { font-size: clamp(44px, 15vw, 70px); }
       .hero__lead {
@@ -2147,12 +2157,15 @@
       return `
         <div class="image-gallery event-gallery" aria-label="${escapeHtml(eventTitle)}图片">
           ${images.map((image, index) => {
-            const imagePath = `${year}/${image.file.trim()}`;
+            const imageFile = image.file.trim();
+            const originalPath = `${year}/${imageFile}`;
+            const thumbnailPath = `${year}/thumbs/${imageFile}.webp`;
+            const previewPath = `${year}/previews/${imageFile}.webp`;
             const imageAlt = image.alt || `${eventTitle}第${index + 1}张图片`;
             return `
               <figure class="gallery-item">
                 <button class="gallery-open" type="button" aria-label="全屏查看：${escapeHtml(imageAlt)}">
-                  <img class="gallery-image" src="${escapeHtml(imagePath)}" alt="${escapeHtml(imageAlt)}" loading="lazy" onerror="const gallery=this.closest('.image-gallery'); const card=this.closest('.event-card'); this.closest('.gallery-item').remove(); if (gallery && !gallery.children.length) { gallery.remove(); card.classList.add('no-images'); }">
+                  <img class="gallery-image" src="${escapeHtml(thumbnailPath)}" data-thumbnail="${escapeHtml(thumbnailPath)}" data-preview="${escapeHtml(previewPath)}" data-original="${escapeHtml(originalPath)}" alt="${escapeHtml(imageAlt)}" width="480" height="360" loading="lazy" decoding="async" fetchpriority="low" onerror="const gallery=this.closest('.image-gallery'); const card=this.closest('.event-card'); this.closest('.gallery-item').remove(); if (gallery && !gallery.children.length) { gallery.remove(); card.classList.add('no-images'); }">
                 </button>
                 ${image.caption ? `<figcaption class="gallery-caption">${escapeHtml(image.caption)}</figcaption>` : ""}
               </figure>`;
@@ -2385,14 +2398,17 @@
       const button = viewerItems[viewerIndex];
       const sourceImage = button.querySelector(".gallery-image");
       const caption = button.closest(".gallery-item").querySelector(".gallery-caption");
-      const sourcePath = sourceImage.getAttribute("src");
+      const previewPath = sourceImage.dataset.preview || sourceImage.getAttribute("src");
+      const originalPath = sourceImage.dataset.original || sourceImage.getAttribute("src");
 
-      viewerImage.src = sourcePath;
+      viewerImage.dataset.thumbnail = sourceImage.dataset.thumbnail;
+      viewerImage.dataset.fallbackUsed = "";
+      viewerImage.src = previewPath;
       viewerImage.alt = sourceImage.alt;
       viewerCaption.textContent = caption ? caption.textContent : sourceImage.alt;
       viewerCount.textContent = `${viewerIndex + 1} / ${viewerItems.length}`;
-      viewerDownload.href = sourcePath;
-      viewerDownload.download = sourcePath.split("/").pop() || "image";
+      viewerDownload.href = originalPath;
+      viewerDownload.download = originalPath.split("/").pop() || "image";
       viewerPrevious.hidden = viewerItems.length < 2;
       viewerNext.hidden = viewerItems.length < 2;
     }
@@ -2422,6 +2438,12 @@
     timeline.addEventListener("click", (event) => {
       const button = event.target.closest(".gallery-open");
       if (button) openImageViewer(button);
+    });
+
+    viewerImage.addEventListener("error", () => {
+      if (viewerImage.dataset.fallbackUsed) return;
+      viewerImage.dataset.fallbackUsed = "true";
+      viewerImage.src = viewerImage.dataset.thumbnail;
     });
 
     viewerClose.addEventListener("click", closeImageViewer);
