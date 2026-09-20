@@ -400,7 +400,7 @@ window.HISTORY_DATA = [
     year: 2016,
     title: "筹备与积累",
     summary: "为协会的正式成立积蓄力量。活动、成员与筹备故事可在资料整理后补充。",
-    leader: "负责人：周志彬 | 小飞 | 浩冉",
+    leader: "负责人：周志彬",
     key: false,
     events: [
       {
@@ -431,7 +431,7 @@ window.HISTORY_DATA = [
     year: 2017,
     title: "协会正式成立",
     summary: "商丘工学院轮滑协会完成正式成立，从共同爱好走向有组织、有传承的校园社团。",
-    leader: "负责人：蒋宇翔 | 邵永帅 | 郭帅盟 | 陈家林",
+    leader: "负责人：蒋宇翔",
     key: true,
     events: [
       {
@@ -454,7 +454,7 @@ window.HISTORY_DATA = [
     year: 2018,
     title: "稳步成长",
     summary: "本年度发展资料待补充。可以记录招新、日常训练、校园活动与负责人信息。",
-    leader: "负责人：王坤 | 王英培",
+    leader: "负责人：王坤",
     key: false,
     events: [
       {
@@ -490,7 +490,7 @@ window.HISTORY_DATA = [
     year: 2021,
     title: "再次出发",
     summary: "本年度发展资料待补充。",
-    leader: "负责人：待补充",
+    leader: "负责人：莫翰卿",
     key: false,
     events: []
   },
@@ -498,7 +498,7 @@ window.HISTORY_DATA = [
     year: 2022,
     title: "热爱相聚",
     summary: "本年度发展资料待补充。",
-    leader: "负责人：待补充",
+    leader: "负责人：高财旺",
     key: false,
     events: []
   },
@@ -506,7 +506,7 @@ window.HISTORY_DATA = [
     year: 2023,
     title: "传承与突破",
     summary: "本年度发展资料待补充。",
-    leader: "负责人：待补充",
+    leader: "负责人：薛闰",
     key: false,
     events: []
   },
@@ -514,7 +514,7 @@ window.HISTORY_DATA = [
     year: 2024,
     title: "并肩向前",
     summary: "本年度发展资料待补充。",
-    leader: "负责人：刘文彬",
+    leader: "负责人：王向阳",
     key: false,
     events: []
   },
