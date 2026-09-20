@@ -431,7 +431,7 @@ window.HISTORY_DATA = [
     year: 2017,
     title: "协会正式成立",
     summary: "商丘工学院轮滑协会完成正式成立，从共同爱好走向有组织、有传承的校园社团。",
-    leader: "负责人：蒋宇翔",
+    leader: "负责人：蒋宇翔 | 邵永帅",
     key: true,
     events: [
       {
