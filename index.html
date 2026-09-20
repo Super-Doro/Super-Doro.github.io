@@ -190,6 +190,35 @@
       object-fit: contain;
     }
 
+    .topbar__actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .admin-contact-trigger {
+      padding: 0 16px 0 0;
+      border: 0;
+      border-right: 1px solid rgba(18,22,26,.16);
+      color: rgba(18,22,26,.68);
+      background: transparent;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: color .2s ease, opacity .2s ease;
+    }
+
+    .admin-contact-trigger:hover {
+      color: var(--orange);
+      opacity: .82;
+    }
+
+    .admin-contact-trigger:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 5px;
+    }
+
     .topbar__status {
       display: flex;
       align-items: center;
@@ -1253,7 +1282,103 @@
       box-shadow: 0 10px 28px rgba(82,212,173,.28);
     }
 
-    body.is-viewer-open { overflow: hidden; }
+    .contact-modal[hidden] { display: none; }
+
+    .contact-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1100;
+      display: grid;
+      padding: 20px;
+      place-items: center;
+      background: rgba(8,12,18,.56);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    .contact-modal__panel {
+      position: relative;
+      width: min(420px, 100%);
+      padding: 32px;
+      border: 1px solid rgba(255,255,255,.76);
+      border-radius: 26px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 30px 90px rgba(8,12,18,.28);
+    }
+
+    .contact-modal__eyebrow {
+      display: block;
+      margin-bottom: 8px;
+      color: #16788f;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .18em;
+    }
+
+    .contact-modal h2 {
+      margin: 0 48px 8px 0;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -.03em;
+    }
+
+    .contact-modal__notice {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .contact-modal__contacts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .contact-modal__item {
+      min-width: 0;
+      padding: 16px 0;
+      border-top: 1px solid rgba(18,22,26,.12);
+    }
+
+    .contact-modal__label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .contact-modal__item strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-modal__close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: grid;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      place-items: center;
+      border: 1px solid rgba(18,22,26,.12);
+      border-radius: 50%;
+      color: var(--ink);
+      background: #f3f5f6;
+      font-size: 21px;
+      cursor: pointer;
+    }
+
+    .contact-modal__close:hover { color: var(--white); background: var(--orange); }
+
+    body.is-viewer-open,
+    body.is-contact-open { overflow: hidden; }
 
     .empty-year {
       display: inline-flex;
@@ -1331,6 +1456,13 @@
 
       .topbar { padding: 18px 0; }
       .topbar__status { display: none; }
+      .topbar__actions { gap: 0; }
+      .admin-contact-trigger {
+        padding-right: 0;
+        border-right: 0;
+        font-size: 10px;
+        letter-spacing: .04em;
+      }
 
       .hero__content {
         display: block;
@@ -1627,6 +1759,13 @@
       .image-viewer__close { top: 14px; right: 14px; }
       .image-viewer__image { max-height: calc(100vh - 155px); }
 
+      .contact-modal__panel {
+        padding: 26px 22px 22px;
+        border-radius: 22px;
+      }
+      .contact-modal h2 { font-size: 24px; }
+      .contact-modal__close { top: 16px; right: 16px; }
+
       .year-jump {
         top: auto;
         right: 12px;
@@ -1704,16 +1843,19 @@
       <a class="brand" href="https://baike.baidu.com/item/%E5%95%86%E4%B8%98%E5%B7%A5%E5%AD%A6%E9%99%A2%E8%BD%AE%E6%BB%91%E5%8D%8F%E4%BC%9A/22438092" target="_blank" rel="noopener noreferrer" title="查看商丘工学院轮滑协会百度百科">
         <img class="brand__logo" src="club-logo.png" alt="">商丘工学院轮滑协会
       </a>
-      <div class="topbar__status">由各届会长持续更新</div>
+      <div class="topbar__actions">
+        <button id="admin-contact-trigger" class="admin-contact-trigger" type="button" aria-haspopup="dialog" aria-controls="contact-modal" aria-expanded="false">联系网站管理员</button>
+        <div class="topbar__status">由各届会长持续更新</div>
+      </div>
     </div>
     <div id="hero-danmaku" class="hero__danmaku" aria-hidden="true"></div>
     <div class="hero__content">
       <div class="hero__copy">
-        <p class="eyebrow">Skating Club · Since 2013</p>
+        <p class="eyebrow">Skating Club · Since 2011</p>
         <h1>轮舞飞扬<br><em>轮滑社</em></h1>
         <p class="hero__lead">商丘工学院轮滑协会发展历程。从最初的一群同好，到一届又一届的并肩前行，每一道轮迹都值得被记住。</p>
         <div class="hero__meta">
-          <div><strong>2013</strong>故事开始</div>
+          <div><strong>2011</strong>故事开始</div>
           <div><strong>2017.10.23</strong>协会正式成立</div>
           <a class="scroll-cue" href="#history">进入时间轴 <span aria-hidden="true">↓</span></a>
         </div>
@@ -1773,6 +1915,25 @@
       <img class="year-jump__logo" src="club-logo.png" alt="" aria-hidden="true">
     </button>
   </nav>
+
+  <div id="contact-modal" class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" hidden>
+    <section class="contact-modal__panel">
+      <button class="contact-modal__close" type="button" aria-label="关闭微信联系方式">×</button>
+      <span class="contact-modal__eyebrow">温馨提示</span>
+      <h2 id="contact-modal-title">微信联系方式</h2>
+      <p class="contact-modal__notice">添加好友请备注来意</p>
+      <div class="contact-modal__contacts">
+        <div class="contact-modal__item">
+          <span class="contact-modal__label">管理员</span>
+          <strong>You-Bloved</strong>
+        </div>
+        <div class="contact-modal__item">
+          <span class="contact-modal__label">24届会长</span>
+          <strong>qaz20060106qaz</strong>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <div id="image-viewer" class="image-viewer" role="dialog" aria-modal="true" aria-label="图片全屏预览" hidden>
     <div class="image-viewer__toolbar">
@@ -2107,6 +2268,35 @@
 
       timeline.querySelectorAll(".year-block").forEach((block) => yearJumpObserver.observe(block));
     }
+
+    const contactTrigger = document.querySelector("#admin-contact-trigger");
+    const contactModal = document.querySelector("#contact-modal");
+    const contactClose = contactModal.querySelector(".contact-modal__close");
+    let contactLastFocus = null;
+
+    function openContactModal() {
+      contactLastFocus = document.activeElement;
+      contactModal.hidden = false;
+      contactTrigger.setAttribute("aria-expanded", "true");
+      document.body.classList.add("is-contact-open");
+      contactClose.focus();
+    }
+
+    function closeContactModal() {
+      contactModal.hidden = true;
+      contactTrigger.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("is-contact-open");
+      if (contactLastFocus && document.contains(contactLastFocus)) contactLastFocus.focus();
+    }
+
+    contactTrigger.addEventListener("click", openContactModal);
+    contactClose.addEventListener("click", closeContactModal);
+    contactModal.addEventListener("click", (event) => {
+      if (event.target === contactModal) closeContactModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !contactModal.hidden) closeContactModal();
+    });
 
     const imageViewer = document.querySelector("#image-viewer");
     const viewerImage = document.querySelector("#image-viewer-image");
