@@ -252,7 +252,7 @@ window.HISTORY_DATA = [
         title: "“商工轮舞家族”初创成立",
         description: "2012年秋季，商丘工学院轮滑协会的前身“商工轮舞家族”初创成立。",
         images: [
-          { file: "图片2.png", alt: "2012年秋商工轮舞家族初创影像1", caption: "商工轮舞家族 · 01" },
+          { file: "图片2.png", alt: "2012届会长张世博（左）、李星帅（右）", caption: "2012届会长：张世博（左），李星帅（右）" },
           { file: "图片3.png", alt: "2012年秋商工轮舞家族初创影像2", caption: "商工轮舞家族 · 02" },
           { file: "图片4.png", alt: "2012年秋商工轮舞家族初创影像3", caption: "商工轮舞家族 · 03" },
           { file: "图片5.png", alt: "2012年秋商工轮舞家族初创影像4", caption: "商工轮舞家族 · 04" },
@@ -465,9 +465,7 @@ window.HISTORY_DATA = [
           { file: "1.jpg", alt: "2018年轮滑协会纪念照片1", caption: "协会纪念 · 01" },
           { file: "2.jpg", alt: "2018年轮滑协会纪念照片2", caption: "协会纪念 · 02" },
           { file: "3.jpg", alt: "2018年轮滑协会纪念照片3", caption: "协会纪念 · 03" },
-          { file: "4.jpg", alt: "2018年轮滑协会纪念照片4", caption: "协会纪念 · 04" },
-          { file: "5.jpg", alt: "2018年轮滑协会纪念照片5", caption: "协会纪念 · 05" },
-          { file: "6.jpg", alt: "2018年轮滑协会纪念照片6", caption: "协会纪念 · 06" }
+          { file: "4.jpg", alt: "2018年轮滑协会纪念照片4", caption: "协会纪念 · 04" }
         ]
       }
     ]
