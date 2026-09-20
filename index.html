@@ -1865,7 +1865,7 @@
         <img class="brand__logo" src="club-logo.png" alt="">商丘工学院轮滑协会
       </a>
       <div class="topbar__actions">
-        <button id="admin-contact-trigger" class="admin-contact-trigger" type="button" aria-haspopup="dialog" aria-controls="contact-modal" aria-expanded="false">联系网站管理员</button>
+        <button id="admin-contact-trigger" class="admin-contact-trigger" type="button" aria-haspopup="dialog" aria-controls="contact-modal" aria-expanded="false"></button>
         <div class="topbar__status">由各届会长持续更新</div>
       </div>
     </div>
@@ -1939,20 +1939,11 @@
 
   <div id="contact-modal" class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" hidden>
     <section class="contact-modal__panel">
-      <button class="contact-modal__close" type="button" aria-label="关闭微信联系方式">×</button>
-      <span class="contact-modal__eyebrow">温馨提示</span>
-      <h2 id="contact-modal-title">微信联系方式</h2>
-      <p class="contact-modal__notice">添加好友请备注来意</p>
-      <div class="contact-modal__contacts">
-        <div class="contact-modal__item">
-          <span class="contact-modal__label">管理员</span>
-          <strong>You-Bloved</strong>
-        </div>
-        <div class="contact-modal__item">
-          <span class="contact-modal__label">24届会长</span>
-          <strong>qaz20060106qaz</strong>
-        </div>
-      </div>
+      <button class="contact-modal__close" type="button">×</button>
+      <span id="contact-modal-eyebrow" class="contact-modal__eyebrow"></span>
+      <h2 id="contact-modal-title"></h2>
+      <p id="contact-modal-notice" class="contact-modal__notice"></p>
+      <div id="contact-modal-contacts" class="contact-modal__contacts"></div>
     </section>
   </div>
 
@@ -2321,6 +2312,37 @@
     const contactTrigger = document.querySelector("#admin-contact-trigger");
     const contactModal = document.querySelector("#contact-modal");
     const contactClose = contactModal.querySelector(".contact-modal__close");
+    const contactEyebrow = document.querySelector("#contact-modal-eyebrow");
+    const contactTitle = document.querySelector("#contact-modal-title");
+    const contactNotice = document.querySelector("#contact-modal-notice");
+    const contactList = document.querySelector("#contact-modal-contacts");
+    const contactConfig = siteConfig.contact && typeof siteConfig.contact === "object"
+      ? siteConfig.contact
+      : {};
+    const contactConfigTitle = String(contactConfig.title || "联系方式").trim();
+    const contactItems = Array.isArray(contactConfig.contacts)
+      ? contactConfig.contacts.filter((item) => item && (item.label || item.value))
+      : [];
+
+    contactTrigger.textContent = String(contactConfig.triggerLabel || "联系方式").trim();
+    contactEyebrow.textContent = String(contactConfig.eyebrow || "").trim();
+    contactEyebrow.hidden = !contactEyebrow.textContent;
+    contactTitle.textContent = contactConfigTitle;
+    contactNotice.textContent = String(contactConfig.notice || "").trim();
+    contactNotice.hidden = !contactNotice.textContent;
+    contactClose.setAttribute("aria-label", `关闭${contactConfigTitle}`);
+    contactList.replaceChildren(...contactItems.map((item) => {
+      const contactItem = document.createElement("div");
+      const label = document.createElement("span");
+      const value = document.createElement("strong");
+      contactItem.className = "contact-modal__item";
+      label.className = "contact-modal__label";
+      label.textContent = String(item.label || "联系人").trim();
+      value.textContent = String(item.value || "").trim();
+      contactItem.append(label, value);
+      return contactItem;
+    }));
+    contactList.hidden = !contactItems.length;
     let contactLastFocus = null;
 
     function openContactModal() {

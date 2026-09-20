@@ -6,6 +6,11 @@
  * - 图片与 index.html 同级：填写 "背景.jpg"
  * - 不使用图片：填写空字符串 ""，页面会自动使用内置默认背景
  *
+ * contact：网站管理员联系方式弹窗。
+ * - triggerLabel：页面右上角入口文字
+ * - eyebrow、title、notice：弹窗提示文字
+ * - contacts：联系人数组；复制对象即可继续增加联系人
+ *
  * danmakuNames：首屏循环弹幕的人名数组。
  * - 每个名字使用英文逗号分隔
  * - 删除某一项即可停止展示该名字
@@ -13,6 +18,16 @@
  */
 window.SITE_CONFIG = {
   heroBackground: "背景.png",
+  contact: {
+    triggerLabel: "联系网站管理员",
+    eyebrow: "温馨提示",
+    title: "微信联系方式",
+    notice: "添加好友请备注来意",
+    contacts: [
+      { label: "管理员", value: "You-Bloved" },
+      { label: "当任会长", value: "qaz20060106qaz" }
+    ]
+  },
   danmakuNames: [
     "周志彬",
     "蒋宇翔",
