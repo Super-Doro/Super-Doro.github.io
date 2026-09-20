@@ -184,7 +184,7 @@ window.SITE_CONFIG = {
  *   year: 2027,                       // 年份（必填，数字）
  *   title: "年度标题",                // 年度标题（必填）
  *   summary: "这一年的整体介绍",       // 年度简介（没有可写空字符串）
- *   leader: "会长：待补充",            // 会长信息
+ *   leader: "负责人：待补充",          // 负责人信息
  *   key: false,                       // 是否为关键年份；true 会突出显示节点
  *                                      // 年份对象不配置图片，图片只放在月份事件中
  *   events: [                         // 月份事件；没有事件就写 []，页面不会显示月份
@@ -229,7 +229,7 @@ window.HISTORY_DATA = [
     year: 2011,
     title: "故事从这里开始",
     summary: "一群热爱轮滑的同学相遇，社团的最初构想由此萌芽。",
-    leader: "发起者：张世博",
+    leader: "发起者：张世博 | 李星帅",
     key: true,
     events: [
       {
@@ -245,7 +245,7 @@ window.HISTORY_DATA = [
     year: 2012,
     title: "热爱延续",
     summary: "最初的轮滑故事继续展开，同好之间的交流与活动逐渐延续。",
-    leader: "会长：张世博 | 李星帅",
+    leader: "负责人：张世博 | 李星帅 | 袁帅博",
     key: false,
     events: [
       {
@@ -266,7 +266,7 @@ window.HISTORY_DATA = [
     year: 2013,
     title: "轮迹初现",
     summary: "最初的轮滑故事继续展开，同好之间的交流与活动逐渐延续。",
-    leader: "会长：张世博 | 李星帅",
+    leader: "负责人：张世博 | 李星帅",
     key: false,
     events: [
       {
@@ -294,7 +294,7 @@ window.HISTORY_DATA = [
     year: 2014,
     title: "早期活动记录",
     summary: "这一年的活动、成员与成长故事正在整理中，可在后续补充相关资料。",
-    leader: "会长：李星帅 | 袁帅博",
+    leader: "负责人：李星帅 | 袁帅博",
     key: false,
     events: [
       {
@@ -344,7 +344,7 @@ window.HISTORY_DATA = [
     year: 2015,
     title: "积累与成长",
     summary: "轮滑同好继续相聚并积累活动经验，",
-    leader: "会长：陈春林 | 刘铜浩",
+    leader: "负责人：陈春林 | 刘铜浩",
     key: false,
     events: [
       {
@@ -400,7 +400,7 @@ window.HISTORY_DATA = [
     year: 2016,
     title: "筹备与积累",
     summary: "为协会的正式成立积蓄力量。活动、成员与筹备故事可在资料整理后补充。",
-    leader: "会长：周志彬",
+    leader: "负责人：周志彬 | 小飞 | 浩冉",
     key: false,
     events: [
       {
@@ -431,7 +431,7 @@ window.HISTORY_DATA = [
     year: 2017,
     title: "协会正式成立",
     summary: "商丘工学院轮滑协会完成正式成立，从共同爱好走向有组织、有传承的校园社团。",
-    leader: "会长：蒋宇翔",
+    leader: "负责人：蒋宇翔 | 邵永帅 | 郭帅盟 | 陈家林",
     key: true,
     events: [
       {
@@ -454,7 +454,7 @@ window.HISTORY_DATA = [
     year: 2018,
     title: "稳步成长",
     summary: "本年度发展资料待补充。可以记录招新、日常训练、校园活动与负责人信息。",
-    leader: "会长：王坤",
+    leader: "负责人：王坤 | 王英培",
     key: false,
     events: [
       {
@@ -474,7 +474,7 @@ window.HISTORY_DATA = [
     year: 2019,
     title: "轮迹延伸",
     summary: "本年度发展资料待补充。",
-    leader: "会长：待补充",
+    leader: "负责人：待补充",
     key: false,
     events: []
   },
@@ -482,7 +482,7 @@ window.HISTORY_DATA = [
     year: 2020,
     title: "共同坚守",
     summary: "本年度发展资料待补充。",
-    leader: "会长：待补充",
+    leader: "负责人：待补充",
     key: false,
     events: []
   },
@@ -490,7 +490,7 @@ window.HISTORY_DATA = [
     year: 2021,
     title: "再次出发",
     summary: "本年度发展资料待补充。",
-    leader: "会长：待补充",
+    leader: "负责人：待补充",
     key: false,
     events: []
   },
@@ -498,7 +498,7 @@ window.HISTORY_DATA = [
     year: 2022,
     title: "热爱相聚",
     summary: "本年度发展资料待补充。",
-    leader: "会长：待补充",
+    leader: "负责人：待补充",
     key: false,
     events: []
   },
@@ -506,7 +506,7 @@ window.HISTORY_DATA = [
     year: 2023,
     title: "传承与突破",
     summary: "本年度发展资料待补充。",
-    leader: "会长：待补充",
+    leader: "负责人：待补充",
     key: false,
     events: []
   },
@@ -514,7 +514,7 @@ window.HISTORY_DATA = [
     year: 2024,
     title: "并肩向前",
     summary: "本年度发展资料待补充。",
-    leader: "会长：刘文彬",
+    leader: "负责人：刘文彬",
     key: false,
     events: []
   },
@@ -522,7 +522,7 @@ window.HISTORY_DATA = [
     year: 2025,
     title: "十四年轮迹",
     summary: "从 2011 到 2025，属于协会的故事走过十四年。相关纪念活动与影像资料可在这里补充。",
-    leader: "会长：刘文彬",
+    leader: "负责人：刘文彬",
     key: true,
     events: []
   },
@@ -530,7 +530,7 @@ window.HISTORY_DATA = [
     year: 2026,
     title: "故事仍在继续",
     summary: "新一程正在书写。欢迎继续补充这一年的活动、成员与难忘瞬间。",
-    leader: "会长：张资灵",
+    leader: "负责人：张资灵",
     key: false,
     events: []
   }
