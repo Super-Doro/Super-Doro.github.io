@@ -422,7 +422,9 @@ window.HISTORY_DATA = [
           { file: "9.jpeg", alt: "2016年轮滑活动影像9", caption: "2016 年影像 · 09" },
           { file: "10.jpeg", alt: "2016年轮滑活动影像10", caption: "2016 年影像 · 10" },
           { file: "11.jpeg", alt: "2016年轮滑活动影像11", caption: "2016 年影像 · 11" },
-          { file: "12.jpeg", alt: "2016年轮滑活动影像12", caption: "2016 年影像 · 12" }
+          { file: "12.jpeg", alt: "2016年轮滑活动影像12", caption: "2016 年影像 · 12" },
+          { file: "13.jpeg", alt: "2016年轮滑活动影像13", caption: "2016 年影像 · 13" },
+          { file: "14.jpeg", alt: "2016年轮滑活动影像14", caption: "2016 年影像 · 14" }
         ]
       }
     ]
