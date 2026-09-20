@@ -96,7 +96,66 @@ window.SITE_CONFIG = {
     "杨香香",
     "周露瑶",
     "赵亚涛",
-    "郭丽婉"
+    "郭丽婉",
+    "Cc",
+    "乐乐",
+    "陈利静",
+    "郭全伟",
+    "朱慧茹",
+    "小龙",
+    "杨",
+    "阿飞",
+    "昊梦",
+    "芳芳",
+    "小蚊子",
+    "啵",
+    "阿袁",
+    "炮总",
+    "曾晶",
+    "合宝",
+    "金豆",
+    "李梦",
+    "南宝",
+    "暖宝宝",
+    "土豆",
+    "朝君",
+    "小木",
+    "徐自威",
+    "鸽子",
+    "怪梦娜",
+    "卢慧敏",
+    "国梦",
+    "硕威",
+    "轩子",
+    "龙",
+    "雯",
+    "秦",
+    "彩彩",
+    "青梅",
+    "肖肖",
+    "泗水",
+    "苏苏",
+    "旭",
+    "小黑",
+    "小玲子",
+    "小星",
+    "志慧",
+    "小慧",
+    "李嘉杰",
+    "杰宝",
+    "冷凌",
+    "明亮",
+    "乔真真",
+    "吴亚南",
+    "于",
+    "杨六奇",
+    "柚子",
+    "张梦瑶",
+    "翟鹏",
+    "Super doro",
+    "金瑞",
+    "饭饭",
+    "酱阳"
   ]
 };
 
@@ -110,12 +169,12 @@ window.SITE_CONFIG = {
  *   year: 2027,                       // 年份（必填，数字）
  *   title: "年度标题",                // 年度标题（必填）
  *   summary: "这一年的整体介绍",       // 年度简介（没有可写空字符串）
- *   leader: "2027届会长：待补充",      // 会长信息；年份与当前年度保持一致
+ *   leader: "会长：待补充",            // 会长信息
  *   key: false,                       // 是否为关键年份；true 会突出显示节点
  *                                      // 年份对象不配置图片，图片只放在月份事件中
  *   events: [                         // 月份事件；没有事件就写 []，页面不会显示月份
  *     {
- *       month: 10,                    // 月份（1—12，必填）
+ *       month: 10,                    // 月份（1—12；日期无法追溯时删除这一行）
  *       day: 23,                      // 日期（可选；没有就删除这一行）
  *       title: "事件标题",             // 事件标题（必填）
  *       description: "事件介绍",       // 事件说明（可选）
@@ -155,7 +214,7 @@ window.HISTORY_DATA = [
     year: 2011,
     title: "故事从这里开始",
     summary: "一群热爱轮滑的同学相遇，社团的最初构想由此萌芽。更多当年资料可在这里继续补充。",
-    leader: "2011届会长：待补充",
+    leader: "会长：待补充",
     key: true,
     events: []
   },
@@ -163,7 +222,7 @@ window.HISTORY_DATA = [
     year: 2012,
     title: "热爱延续",
     summary: "最初的轮滑故事继续展开，同好之间的交流与活动逐渐延续。更多当年资料可在这里继续补充。",
-    leader: "2012届会长：李星帅",
+    leader: "会长：李星帅",
     key: false,
     events: []
   },
@@ -171,39 +230,127 @@ window.HISTORY_DATA = [
     year: 2013,
     title: "轮迹初现",
     summary: "最初的轮滑故事继续展开，同好之间的交流与活动逐渐延续。更多当年资料可在这里继续补充。",
-    leader: "2013届会长：待补充",
+    leader: "会长：待补充",
     key: false,
-    events: []
+    events: [
+      {
+        title: "年度影像记录",
+        images: [
+          { file: "1.jpeg", alt: "2013年轮滑活动影像1", caption: "2013 年影像 · 01" },
+          { file: "2.jpeg", alt: "2013年轮滑活动影像2", caption: "2013 年影像 · 02" },
+          { file: "3.jpeg", alt: "2013年轮滑活动影像3", caption: "2013 年影像 · 03" },
+          { file: "4.jpeg", alt: "2013年轮滑活动影像4", caption: "2013 年影像 · 04" }
+        ]
+      }
+    ]
   },
   {
     year: 2014,
     title: "早期活动记录",
     summary: "这一年的活动、成员与成长故事正在整理中，可在后续补充相关资料。",
-    leader: "2014届会长：待补充",
+    leader: "会长：待补充",
     key: false,
-    events: []
+    events: [
+      {
+        title: "年度影像记录",
+        images: [
+          { file: "1.png", alt: "2014年轮滑活动影像1", caption: "2014 年影像 · 01" },
+          { file: "2.png", alt: "2014年轮滑活动影像2", caption: "2014 年影像 · 02" },
+          { file: "3.png", alt: "2014年轮滑活动影像3", caption: "2014 年影像 · 03" }
+        ]
+      }
+    ]
   },
   {
     year: 2015,
     title: "积累与成长",
     summary: "轮滑同好继续相聚并积累活动经验，更多当年资料可在这里继续补充。",
-    leader: "2015届会长：刘铜浩",
+    leader: "会长：刘铜浩",
     key: false,
-    events: []
+    events: [
+      {
+        title: "年度影像记录 · 第一组",
+        images: [
+          { file: "1.jpeg", alt: "2015年轮滑活动影像1", caption: "2015 年影像 · 01" },
+          { file: "2.jpeg", alt: "2015年轮滑活动影像2", caption: "2015 年影像 · 02" },
+          { file: "3.jpeg", alt: "2015年轮滑活动影像3", caption: "2015 年影像 · 03" },
+          { file: "4.jpeg", alt: "2015年轮滑活动影像4", caption: "2015 年影像 · 04" },
+          { file: "5.jpeg", alt: "2015年轮滑活动影像5", caption: "2015 年影像 · 05" },
+          { file: "6.jpeg", alt: "2015年轮滑活动影像6", caption: "2015 年影像 · 06" },
+          { file: "7.jpeg", alt: "2015年轮滑活动影像7", caption: "2015 年影像 · 07" },
+          { file: "8.jpeg", alt: "2015年轮滑活动影像8", caption: "2015 年影像 · 08" }
+        ]
+      },
+      {
+        title: "年度影像记录 · 第二组",
+        images: [
+          { file: "9.jpeg", alt: "2015年轮滑活动影像9", caption: "2015 年影像 · 09" },
+          { file: "10.jpeg", alt: "2015年轮滑活动影像10", caption: "2015 年影像 · 10" },
+          { file: "11.jpeg", alt: "2015年轮滑活动影像11", caption: "2015 年影像 · 11" },
+          { file: "12.jpeg", alt: "2015年轮滑活动影像12", caption: "2015 年影像 · 12" },
+          { file: "13.jpeg", alt: "2015年轮滑活动影像13", caption: "2015 年影像 · 13" },
+          { file: "14.jpeg", alt: "2015年轮滑活动影像14", caption: "2015 年影像 · 14" },
+          { file: "15.jpeg", alt: "2015年轮滑活动影像15", caption: "2015 年影像 · 15" },
+          { file: "16.jpeg", alt: "2015年轮滑活动影像16", caption: "2015 年影像 · 16" }
+        ]
+      },
+      {
+        title: "年度影像记录 · 第三组",
+        images: [
+          { file: "17.jpeg", alt: "2015年轮滑活动影像17", caption: "2015 年影像 · 17" },
+          { file: "18.jpeg", alt: "2015年轮滑活动影像18", caption: "2015 年影像 · 18" },
+          { file: "19.jpeg", alt: "2015年轮滑活动影像19", caption: "2015 年影像 · 19" },
+          { file: "20.jpeg", alt: "2015年轮滑活动影像20", caption: "2015 年影像 · 20" },
+          { file: "21.jpeg", alt: "2015年轮滑活动影像21", caption: "2015 年影像 · 21" },
+          { file: "22.jpeg", alt: "2015年轮滑活动影像22", caption: "2015 年影像 · 22" },
+          { file: "23.jpeg", alt: "2015年轮滑活动影像23", caption: "2015 年影像 · 23" },
+          { file: "24.jpeg", alt: "2015年轮滑活动影像24", caption: "2015 年影像 · 24" }
+        ]
+      },
+      {
+        title: "年度影像记录 · 第四组",
+        images: [
+          { file: "25.jpeg", alt: "2015年轮滑活动影像25", caption: "2015 年影像 · 25" }
+        ]
+      }
+    ]
   },
   {
     year: 2016,
     title: "筹备与积累",
     summary: "为协会的正式成立积蓄力量。活动、成员与筹备故事可在资料整理后补充。",
-    leader: "2016届会长：周志彬",
+    leader: "会长：周志彬",
     key: false,
-    events: []
+    events: [
+      {
+        title: "年度影像记录 · 第一组",
+        images: [
+          { file: "1.jpeg", alt: "2016年轮滑活动影像1", caption: "2016 年影像 · 01" },
+          { file: "2.jpeg", alt: "2016年轮滑活动影像2", caption: "2016 年影像 · 02" },
+          { file: "3.jpeg", alt: "2016年轮滑活动影像3", caption: "2016 年影像 · 03" },
+          { file: "4.jpeg", alt: "2016年轮滑活动影像4", caption: "2016 年影像 · 04" },
+          { file: "5.jpeg", alt: "2016年轮滑活动影像5", caption: "2016 年影像 · 05" },
+          { file: "6.jpeg", alt: "2016年轮滑活动影像6", caption: "2016 年影像 · 06" },
+          { file: "7.jpeg", alt: "2016年轮滑活动影像7", caption: "2016 年影像 · 07" },
+          { file: "8.jpeg", alt: "2016年轮滑活动影像8", caption: "2016 年影像 · 08" }
+        ]
+      },
+      {
+        title: "年度影像记录 · 第二组",
+        images: [
+          { file: "9.jpeg", alt: "2016年轮滑活动影像9", caption: "2016 年影像 · 09" },
+          { file: "10.jpeg", alt: "2016年轮滑活动影像10", caption: "2016 年影像 · 10" },
+          { file: "11.jpeg", alt: "2016年轮滑活动影像11", caption: "2016 年影像 · 11" },
+          { file: "12.jpeg", alt: "2016年轮滑活动影像12", caption: "2016 年影像 · 12" }
+        ]
+      }
+    ]
   },
   {
     year: 2017,
     title: "协会正式成立",
     summary: "商丘工学院轮滑协会完成正式成立，从共同爱好走向有组织、有传承的校园社团。",
-    leader: "2017届会长：蒋宇翔",
+    leader: "会长：蒋宇翔",
     key: true,
     events: [
       {
@@ -226,7 +373,7 @@ window.HISTORY_DATA = [
     year: 2018,
     title: "稳步成长",
     summary: "本年度发展资料待补充。可以记录招新、日常训练、校园活动与负责人信息。",
-    leader: "2018届会长：王坤",
+    leader: "会长：王坤",
     key: false,
     events: [
       {
@@ -248,7 +395,7 @@ window.HISTORY_DATA = [
     year: 2019,
     title: "轮迹延伸",
     summary: "本年度发展资料待补充。",
-    leader: "2019届会长：待补充",
+    leader: "会长：待补充",
     key: false,
     events: []
   },
@@ -256,7 +403,7 @@ window.HISTORY_DATA = [
     year: 2020,
     title: "共同坚守",
     summary: "本年度发展资料待补充。",
-    leader: "2020届会长：待补充",
+    leader: "会长：待补充",
     key: false,
     events: []
   },
@@ -264,7 +411,7 @@ window.HISTORY_DATA = [
     year: 2021,
     title: "再次出发",
     summary: "本年度发展资料待补充。",
-    leader: "2021届会长：待补充",
+    leader: "会长：待补充",
     key: false,
     events: []
   },
@@ -272,7 +419,7 @@ window.HISTORY_DATA = [
     year: 2022,
     title: "热爱相聚",
     summary: "本年度发展资料待补充。",
-    leader: "2022届会长：待补充",
+    leader: "会长：待补充",
     key: false,
     events: []
   },
@@ -280,7 +427,7 @@ window.HISTORY_DATA = [
     year: 2023,
     title: "传承与突破",
     summary: "本年度发展资料待补充。",
-    leader: "2023届会长：待补充",
+    leader: "会长：待补充",
     key: false,
     events: []
   },
@@ -288,7 +435,7 @@ window.HISTORY_DATA = [
     year: 2024,
     title: "并肩向前",
     summary: "本年度发展资料待补充。",
-    leader: "2024届会长：待补充",
+    leader: "会长：刘文彬",
     key: false,
     events: []
   },
@@ -296,7 +443,7 @@ window.HISTORY_DATA = [
     year: 2025,
     title: "十四年轮迹",
     summary: "从 2011 到 2025，属于协会的故事走过十四年。相关纪念活动与影像资料可在这里补充。",
-    leader: "2025届会长：待补充",
+    leader: "会长：刘文彬",
     key: true,
     events: []
   },
@@ -304,7 +451,7 @@ window.HISTORY_DATA = [
     year: 2026,
     title: "故事仍在继续",
     summary: "新一程正在书写。欢迎继续补充这一年的活动、成员与难忘瞬间。",
-    leader: "2026届会长：待补充",
+    leader: "会长：张资灵",
     key: false,
     events: []
   }

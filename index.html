@@ -976,6 +976,7 @@
     .gallery-item {
       position: relative;
       min-width: 0;
+      aspect-ratio: 4 / 3;
       margin: 0;
       overflow: hidden;
       border: 1px solid rgba(15,23,42,.08);
@@ -1029,7 +1030,7 @@
     }
 
     .event-gallery {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       padding: 12px;
       align-content: center;
       border-left: 1px solid rgba(15,23,42,.07);
@@ -1037,6 +1038,19 @@
     }
 
     .event-card.no-images .event-body { grid-template-columns: 1fr; }
+
+    .event-card.is-undated { grid-template-columns: 1fr; }
+
+    .event-card.is-undated .event-body {
+      grid-template-columns: 1fr;
+      border-radius: 24px;
+    }
+
+    .event-card.is-undated .event-gallery {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid rgba(15,23,42,.07);
+      border-left: 0;
+    }
 
     .year-jump[hidden] { display: none; }
 
@@ -1728,6 +1742,7 @@
         writing-mode: vertical-rl;
       }
       .event-body { grid-template-columns: 1fr; }
+      .event-card.is-undated .event-body { grid-template-columns: 1fr; }
       .event-copy { padding: 23px 19px; }
       .event-gallery {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1737,9 +1752,15 @@
         border-left: 0;
       }
 
+      .event-card.is-undated .event-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+
       .event-gallery .gallery-item { border-radius: 9px; }
       .event-gallery .gallery-image {
-        height: clamp(62px, 15vw, 92px);
+        height: 100%;
         aspect-ratio: auto;
       }
       .event-gallery .gallery-caption {
@@ -2149,17 +2170,25 @@
     }
 
     function renderEvent(event, year) {
-      const month = String(event.month).padStart(2, "0");
-      const dayText = event.day ? `${month}.${String(event.day).padStart(2, "0")}` : month;
-      const dateLabel = event.day ? `${year}年${event.month}月${event.day}日` : `${year}年${event.month}月`;
+      const monthNumber = Number(event.month);
+      const hasMonth = Number.isInteger(monthNumber) && monthNumber >= 1 && monthNumber <= 12;
       const images = getValidImages(event.images);
+      let dateMarkup = "";
 
-      return `
-        <article class="event-card reveal${images.length ? "" : " no-images"}">
+      if (hasMonth) {
+        const month = String(monthNumber).padStart(2, "0");
+        const dayText = event.day ? `${month}.${String(event.day).padStart(2, "0")}` : month;
+        const dateLabel = event.day ? `${year}年${monthNumber}月${event.day}日` : `${year}年${monthNumber}月`;
+        dateMarkup = `
           <time class="event-date" datetime="${year}-${month}${event.day ? `-${String(event.day).padStart(2, "0")}` : ""}">
             <strong>${escapeHtml(dayText)}</strong>
             <span>${escapeHtml(dateLabel)}</span>
-          </time>
+          </time>`;
+      }
+
+      return `
+        <article class="event-card reveal${images.length ? "" : " no-images"}${hasMonth ? "" : " is-undated"}">
+          ${dateMarkup}
           <div class="event-body">
             <div class="event-copy">
               <h4>${escapeHtml(event.title)}</h4>
@@ -2176,7 +2205,15 @@
         .sort((a, b) => a.year - b.year)
         .map((item) => {
           const events = Array.isArray(item.events)
-            ? item.events.slice().sort((a, b) => (a.month * 31 + (a.day || 0)) - (b.month * 31 + (b.day || 0)))
+            ? item.events.slice().sort((a, b) => {
+                const getEventOrder = (event) => {
+                  const month = Number(event.month);
+                  return Number.isInteger(month) && month >= 1 && month <= 12
+                    ? month * 31 + (Number(event.day) || 0)
+                    : 13 * 31;
+                };
+                return getEventOrder(a) - getEventOrder(b);
+              })
             : [];
 
           return `
