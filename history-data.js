@@ -513,7 +513,7 @@ window.HISTORY_DATA = [
     year: 2021,
     title: "再次出发",
     summary: "本年度发展资料待补充。",
-    leader: "负责人：莫翰卿",
+    leader: "负责人：高财旺 | 鲁萍",
     key: false,
     events: []
   },
@@ -529,7 +529,7 @@ window.HISTORY_DATA = [
     year: 2023,
     title: "传承与突破",
     summary: "本年度发展资料待补充。",
-    leader: "负责人：薛闰",
+    leader: "负责人：谢国军 | 薛润",
     key: false,
     events: []
   },
@@ -537,7 +537,7 @@ window.HISTORY_DATA = [
     year: 2024,
     title: "并肩向前",
     summary: "本年度发展资料待补充。",
-    leader: "负责人：王向阳",
+    leader: "负责人：王向阳 | 雪靖添",
     key: false,
     events: []
   },
