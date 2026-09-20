@@ -155,7 +155,7 @@ window.HISTORY_DATA = [
     year: 2011,
     title: "故事从这里开始",
     summary: "一群热爱轮滑的同学相遇，社团的最初构想由此萌芽。更多当年资料可在这里继续补充。",
-    leader: "2011届会长：李星帅",
+    leader: "2011届会长：待补充",
     key: true,
     events: []
   },
@@ -163,7 +163,7 @@ window.HISTORY_DATA = [
     year: 2012,
     title: "热爱延续",
     summary: "最初的轮滑故事继续展开，同好之间的交流与活动逐渐延续。更多当年资料可在这里继续补充。",
-    leader: "2012届会长：待补充",
+    leader: "2012届会长：李星帅",
     key: false,
     events: []
   },

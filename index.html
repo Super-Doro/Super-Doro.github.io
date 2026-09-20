@@ -1977,31 +1977,25 @@
     if (danmakuContainer && heroElement && danmakuNames.length && !reduceMotion) {
       let danmakuTimer = null;
       let danmakuRunning = false;
-      let randomNamePool = [];
+      let danmakuRoundQueue = [];
       let lastDanmakuName = "";
 
-      const getRandomName = () => {
-        if (!randomNamePool.length) {
-          randomNamePool = [...danmakuNames];
-          for (let index = randomNamePool.length - 1; index > 0; index -= 1) {
-            const randomIndex = Math.floor(Math.random() * (index + 1));
-            [randomNamePool[index], randomNamePool[randomIndex]] = [
-              randomNamePool[randomIndex],
-              randomNamePool[index]
-            ];
-          }
-
-          const lastIndex = randomNamePool.length - 1;
-          if (lastIndex > 0 && randomNamePool[lastIndex] === lastDanmakuName) {
-            [randomNamePool[0], randomNamePool[lastIndex]] = [
-              randomNamePool[lastIndex],
-              randomNamePool[0]
-            ];
-          }
+      const prepareDanmakuRound = () => {
+        danmakuRoundQueue = [...danmakuNames];
+        for (let index = danmakuRoundQueue.length - 1; index > 0; index -= 1) {
+          const randomIndex = Math.floor(Math.random() * (index + 1));
+          [danmakuRoundQueue[index], danmakuRoundQueue[randomIndex]] = [
+            danmakuRoundQueue[randomIndex],
+            danmakuRoundQueue[index]
+          ];
         }
 
-        lastDanmakuName = randomNamePool.pop();
-        return lastDanmakuName;
+        if (danmakuRoundQueue.length > 1 && danmakuRoundQueue[0] === lastDanmakuName) {
+          [danmakuRoundQueue[0], danmakuRoundQueue[1]] = [
+            danmakuRoundQueue[1],
+            danmakuRoundQueue[0]
+          ];
+        }
       };
 
       const getRandomTop = (containerHeight) => {
@@ -2023,14 +2017,25 @@
       const createDanmaku = () => {
         if (!danmakuRunning) return;
 
+        /* 本轮名单全部发出后，等待所有弹幕完整离场，再开启下一轮。 */
+        if (!danmakuRoundQueue.length) {
+          if (danmakuContainer.childElementCount) {
+            danmakuTimer = window.setTimeout(createDanmaku, 450);
+            return;
+          }
+          prepareDanmakuRound();
+        }
+
         /* 同屏数量设置上限，避免极端情况下积累过多元素。 */
-        if (danmakuContainer.childElementCount < 10) {
+        if (danmakuContainer.childElementCount < 10 && danmakuRoundQueue.length) {
           const item = document.createElement("span");
           const containerHeight = Math.max(120, danmakuContainer.clientHeight);
           const randomTop = getRandomTop(containerHeight);
+          const nextName = danmakuRoundQueue.shift();
 
           item.className = "danmaku-item";
-          item.textContent = getRandomName();
+          item.textContent = nextName;
+          lastDanmakuName = nextName;
           item.dataset.top = String(randomTop);
           item.style.setProperty("--danmaku-top", `${randomTop}px`);
           item.style.setProperty("--danmaku-duration", `${11.5 + Math.random() * 2.7}s`);
@@ -2041,7 +2046,10 @@
           danmakuContainer.appendChild(item);
         }
 
-        danmakuTimer = window.setTimeout(createDanmaku, 1800);
+        danmakuTimer = window.setTimeout(
+          createDanmaku,
+          danmakuRoundQueue.length ? 1800 : 450
+        );
       };
 
       const startDanmaku = () => {
@@ -2054,6 +2062,10 @@
         danmakuRunning = false;
         window.clearTimeout(danmakuTimer);
         danmakuTimer = null;
+        const interruptedNames = [...danmakuContainer.children]
+          .map((item) => item.textContent)
+          .filter(Boolean);
+        danmakuRoundQueue = [...interruptedNames, ...danmakuRoundQueue];
         danmakuContainer.replaceChildren();
       };
 
