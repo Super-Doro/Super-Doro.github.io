@@ -474,15 +474,36 @@ window.HISTORY_DATA = [
     year: 2019,
     title: "轮迹延伸",
     summary: "本年度发展资料待补充。",
-    leader: "负责人：待补充",
+    leader: "负责人：竹学龙",
     key: false,
-    events: []
+    events: [
+      {
+        title: "年度相册 · 第一组",
+        images: [
+          { file: "1.jpg", alt: "2019年轮滑协会活动影像1", caption: "2019 年影像 · 01" },
+          { file: "2.jpg", alt: "2019年轮滑协会活动影像2", caption: "2019 年影像 · 02" },
+          { file: "3.jpg", alt: "2019年轮滑协会活动影像3", caption: "2019 年影像 · 03" },
+          { file: "4.jpg", alt: "2019年轮滑协会活动影像4", caption: "2019 年影像 · 04" },
+          { file: "5.jpg", alt: "2019年轮滑协会活动影像5", caption: "2019 年影像 · 05" },
+          { file: "6.jpg", alt: "2019年轮滑协会活动影像6", caption: "2019 年影像 · 06" },
+          { file: "7.jpg", alt: "2019年轮滑协会活动影像7", caption: "2019 年影像 · 07" },
+          { file: "8.jpg", alt: "2019年轮滑协会活动影像8", caption: "2019 年影像 · 08" }
+        ]
+      },
+      {
+        title: "年度相册 · 第二组",
+        images: [
+          { file: "9.jpg", alt: "2019年轮滑协会活动影像9", caption: "2019 年影像 · 09" },
+          { file: "10.jpg", alt: "2019年轮滑协会活动影像10", caption: "2019 年影像 · 10" }
+        ]
+      }
+    ]
   },
   {
     year: 2020,
     title: "共同坚守",
     summary: "本年度发展资料待补充。",
-    leader: "负责人：待补充",
+    leader: "负责人：莫翰卿",
     key: false,
     events: []
   },
