@@ -27,9 +27,9 @@ window.SITE_CONFIG = {
     title: "微信联系方式",
     notice: "添加好友请备注来意",
     contacts: [
-      { label: "管理员", value: "You-Bloved" },
-      { label: "上任会长", value: "qaz20060106qaz" },
-      { label: "当任会长", value: "ZL16627631209" }
+      { label: "管理员（陈家林）", value: "You-Bloved" },
+      { label: "上任会长（刘文彬）", value: "qaz20060106qaz" },
+      { label: "当任会长（张资灵）", value: "ZL16627631209" }
     ]
   },
   douyin: {
@@ -309,6 +309,15 @@ window.HISTORY_DATA = [
         images: [
           { file: "7.png", alt: "2013年四大高校在商丘师范举行大富翁活动留念", caption: "四大高校“大富翁”活动留念" }
         ]
+      },
+      {
+        title: "年度影像记录",
+        images: [
+          { file: "8.jpeg", alt: "2013年轮滑活动影像8", caption: "2013 年影像 · 08" },
+          { file: "9.jpeg", alt: "2013年轮滑活动影像9", caption: "2013 年影像 · 09" },
+          { file: "10.jpeg", alt: "2013年轮滑活动影像10", caption: "2013 年影像 · 10" },
+          { file: "11.jpeg", alt: "2013年轮滑活动影像11", caption: "2013 年影像 · 11" }
+        ]
       }
     ]
   },
@@ -320,7 +329,7 @@ window.HISTORY_DATA = [
     key: false,
     events: [
       {
-        title: "年度影像记录",
+        title: "年度影像记录 · 第一组",
         images: [
           { file: "1.png", alt: "2014年轮滑活动影像1", caption: "2014 年影像 · 01" },
           { file: "2.png", alt: "2014年轮滑活动影像2", caption: "2014 年影像 · 02" },
@@ -330,13 +339,6 @@ window.HISTORY_DATA = [
           { file: "6.jpeg", alt: "2014年轮滑活动影像6", caption: "2014 年影像 · 06" },
           { file: "7.jpeg", alt: "2014年轮滑活动影像7", caption: "2014 年影像 · 07" },
           { file: "8.jpeg", alt: "2014年轮滑活动影像8", caption: "2014 年影像 · 08" }
-        ]
-      },
-      {
-        title: "高校联谊活动",
-        description: "2014年，成员们前往商丘职业技术学院参加高校联谊活动。",
-        images: [
-          { file: "10.png", alt: "2014年前往商丘职业技术学院参加高校联谊活动留影", caption: "高校联谊活动" }
         ]
       },
       {
@@ -358,6 +360,44 @@ window.HISTORY_DATA = [
         images: [
           { file: "16.png", alt: "2014年12月夜刷活动留影", caption: "夜刷活动" },
           { file: "9.png", alt: "2014年前往开封刷街活动留影", caption: "开封刷街活动" }
+        ]
+      },
+      {
+        title: "年度影像记录 · 第二组",
+        images: [
+          { file: "17.jpeg", alt: "2014年轮滑活动影像17", caption: "2014 年影像 · 17" },
+          { file: "18.jpeg", alt: "2014年轮滑活动影像18", caption: "2014 年影像 · 18" },
+          { file: "19.jpeg", alt: "2014年轮滑活动影像19", caption: "2014 年影像 · 19" },
+          { file: "20.jpeg", alt: "2014年轮滑活动影像20", caption: "2014 年影像 · 20" },
+          { file: "21.jpeg", alt: "2014年轮滑活动影像21", caption: "2014 年影像 · 21" },
+          { file: "22.jpeg", alt: "2014年轮滑活动影像22", caption: "2014 年影像 · 22" },
+          { file: "23.jpeg", alt: "2014年轮滑活动影像23", caption: "2014 年影像 · 23" },
+          { file: "24.jpeg", alt: "2014年轮滑活动影像24", caption: "2014 年影像 · 24" }
+        ]
+      },
+      {
+        title: "年度影像记录 · 第三组",
+        images: [
+          { file: "25.jpeg", alt: "2014年轮滑活动影像25", caption: "2014 年影像 · 25" },
+          { file: "26.jpeg", alt: "2014年轮滑活动影像26", caption: "2014 年影像 · 26" },
+          { file: "27.jpeg", alt: "2014年轮滑活动影像27", caption: "2014 年影像 · 27" },
+          { file: "28.jpeg", alt: "2014年轮滑活动影像28", caption: "2014 年影像 · 28" },
+          { file: "29.jpeg", alt: "2014年轮滑活动影像29", caption: "2014 年影像 · 29" },
+          { file: "30.jpeg", alt: "2014年轮滑活动影像30", caption: "2014 年影像 · 30" },
+          { file: "31.jpeg", alt: "2014年轮滑活动影像31", caption: "2014 年影像 · 31" },
+          { file: "32.jpeg", alt: "2014年轮滑活动影像32", caption: "2014 年影像 · 32" }
+        ]
+      },
+      {
+        title: "年度影像记录 · 第四组",
+        images: [
+          { file: "10.png", alt: "2014年前往商丘职业技术学院参加高校联谊活动留影", caption: "高校联谊活动" },
+          { file: "33.jpeg", alt: "2014年轮滑活动影像33", caption: "2014 年影像 · 33" },
+          { file: "34.jpeg", alt: "2014年轮滑活动影像34", caption: "2014 年影像 · 34" },
+          { file: "35.jpeg", alt: "2014年轮滑活动影像35", caption: "2014 年影像 · 35" },
+          { file: "36.jpeg", alt: "2014年轮滑活动影像36", caption: "2014 年影像 · 36" },
+          { file: "37.jpeg", alt: "2014年轮滑活动影像37", caption: "2014 年影像 · 37" },
+          { file: "38.jpeg", alt: "2014年轮滑活动影像38", caption: "2014 年影像 · 38" }
         ]
       }
     ]
